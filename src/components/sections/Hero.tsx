@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { openContactModal } from "@/components/ui/ContactModal";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -70,15 +71,15 @@ export default function Hero() {
 					</motion.h1>
 
 					{/* Single CTA button — white pill */}
-					<motion.a
+					<motion.button
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.7, delay: 1.0, ease }}
-						href="#contact"
-						className="mt-8 md:mt-10 inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-full text-[0.9375rem] font-medium hover:bg-white/90 transition-colors"
+						onClick={openContactModal}
+						className="mt-8 md:mt-10 inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-full text-[0.9375rem] font-medium hover:bg-white/90 transition-colors cursor-pointer"
 					>
 						Demander un devis
-					</motion.a>
+					</motion.button>
 				</Container>
 
 				{/* Bottom bar — trust badge (left) */}

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS, COMPANY } from "@/lib/constants";
+import { openContactModal } from "@/components/ui/ContactModal";
 
 const ease = [0.32, 0.72, 0, 1] as const;
 
@@ -145,8 +146,16 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 												exit={{ opacity: 0 }}
 												transition={{ duration: 0.4, delay: 0.35 + i * 0.05, ease }}
 												href={link.href}
-												onClick={onClose}
-												className="text-[0.9375rem] text-foreground hover:text-muted transition-colors"
+												onClick={(e) => {
+													if (link.href === "#contact") {
+														e.preventDefault();
+														onClose();
+														setTimeout(openContactModal, 400);
+													} else {
+														onClose();
+													}
+												}}
+												className="text-[0.9375rem] text-foreground hover:text-muted transition-colors cursor-pointer"
 											>
 												{link.label}
 											</motion.a>

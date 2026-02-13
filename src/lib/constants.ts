@@ -154,6 +154,39 @@ export const FEATURES = [
 	},
 ] as const;
 
+export const FAQ_ITEMS = [
+	{
+		question: "Quels types de travaux réalisez-vous ?",
+		answer:
+			"Nous intervenons sur tous corps d'état : gros œuvre, rénovation complète, aménagement intérieur, toiture, électricité, plomberie et menuiserie. Un seul interlocuteur pour l'ensemble de votre projet.",
+	},
+	{
+		question: "Comment se déroule un projet avec Atout Travaux ?",
+		answer:
+			"Nous commençons par une visite et un diagnostic gratuit, puis nous établissons un devis détaillé. Après validation, nous coordonnons l'ensemble des artisans et assurons un suivi rigoureux jusqu'à la livraison finale.",
+	},
+	{
+		question: "Quelle est la durée moyenne d'un chantier ?",
+		answer:
+			"La durée varie selon l'ampleur du projet : comptez 2 à 4 semaines pour un aménagement intérieur, 2 à 4 mois pour une rénovation complète. Nous vous communiquons un planning précis avant le démarrage.",
+	},
+	{
+		question: "Proposez-vous un devis gratuit ?",
+		answer:
+			"Oui, nous réalisons un devis détaillé et gratuit après une visite sur site. Ce devis est transparent, sans frais cachés, et reste valable 3 mois.",
+	},
+	{
+		question: "Quelles garanties offrez-vous ?",
+		answer:
+			"Tous nos travaux sont couverts par une garantie décennale et une assurance responsabilité civile professionnelle. Nous travaillons exclusivement avec des artisans qualifiés et certifiés.",
+	},
+	{
+		question: "Intervenez-vous en dehors de Clermont-Ferrand ?",
+		answer:
+			"Oui, nous intervenons sur l'ensemble de la région Auvergne-Rhône-Alpes. N'hésitez pas à nous contacter pour vérifier la disponibilité dans votre secteur.",
+	},
+] as const;
+
 export const FOOTER_SERVICES = [
 	"Gros œuvre",
 	"Rénovation",

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
+import ContactButton from "@/components/ui/ContactButton";
 import { STATS, FEATURES, TESTIMONIALS } from "@/lib/constants";
 
 function DotsIcon() {
@@ -70,12 +71,11 @@ export default function About() {
 						<p className="text-[0.9375rem] text-foreground leading-relaxed mb-5">
 							Un processus fluide et une attention au détail pour transformer vos idées en espaces de vie exceptionnels.
 						</p>
-						<a
-							href="#contact"
-							className="inline-flex items-center justify-center px-7 py-3 bg-foreground text-white rounded-full text-[0.9375rem] font-medium hover:bg-foreground/90 transition-colors"
+						<ContactButton
+							className="inline-flex items-center justify-center px-7 py-3 bg-foreground text-white rounded-full text-[0.9375rem] font-medium hover:bg-foreground/90 transition-colors cursor-pointer"
 						>
 							Demander un devis
-						</a>
+						</ContactButton>
 					</ScrollReveal>
 				</div>
 

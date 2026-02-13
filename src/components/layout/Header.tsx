@@ -7,9 +7,23 @@ import MobileMenu from "./MobileMenu";
 export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
+	const [isOverDark, setIsOverDark] = useState(false);
 
 	useEffect(() => {
-		const onScroll = () => setIsScrolled(window.scrollY > 50);
+		const onScroll = () => {
+			setIsScrolled(window.scrollY > 50);
+
+			const darkSections = document.querySelectorAll("[data-header-dark]");
+			let overDark = false;
+			for (const section of darkSections) {
+				const rect = section.getBoundingClientRect();
+				if (rect.top <= 80 && rect.bottom >= 0) {
+					overDark = true;
+					break;
+				}
+			}
+			setIsOverDark(overDark);
+		};
 		window.addEventListener("scroll", onScroll, { passive: true });
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
@@ -23,8 +37,8 @@ export default function Header() {
 		<>
 			<header
 				className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-					isScrolled
-						? "bg-white/95 backdrop-blur-md"
+					isScrolled && !isOverDark
+						? "bg-background/95 backdrop-blur-md"
 						: "bg-transparent"
 				}`}
 			>
@@ -33,7 +47,7 @@ export default function Header() {
 					<a
 						href="#accueil"
 						className={`text-[1.375rem] md:text-[1.5rem] tracking-tight transition-colors ${
-							isScrolled ? "text-foreground" : "text-white"
+							isScrolled && !isOverDark ? "text-foreground" : "text-white"
 						}`}
 					>
 						<span className="font-semibold">Atout</span>
@@ -44,7 +58,7 @@ export default function Header() {
 					<button
 						onClick={() => setIsMenuOpen(true)}
 						className={`p-2 transition-colors ${
-							isScrolled ? "text-foreground" : "text-white"
+							isScrolled && !isOverDark ? "text-foreground" : "text-white"
 						}`}
 						aria-label="Ouvrir le menu"
 					>

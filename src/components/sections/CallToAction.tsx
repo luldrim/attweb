@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import ContactButton from "@/components/ui/ContactButton";
 import { COMPANY } from "@/lib/constants";
 
 export default function CallToAction() {
@@ -41,18 +42,16 @@ export default function CallToAction() {
 							</ScrollReveal>
 							<ScrollReveal delay={0.45}>
 								<div className="flex flex-col sm:flex-row gap-3 justify-center">
-									<a
-										href={COMPANY.phoneHref}
-										className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-xl text-[0.9375rem] font-medium hover:bg-white/90 transition-colors"
+									<ContactButton
+										className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-xl text-[0.9375rem] font-medium hover:bg-white/90 transition-colors cursor-pointer"
 									>
-										Appelez-nous
-									</a>
-									<a
-										href={`mailto:${COMPANY.email}`}
-										className="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-xl text-[0.9375rem] font-medium hover:bg-white/20 transition-colors"
+										Contactez-nous
+									</ContactButton>
+									<ContactButton
+										className="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-xl text-[0.9375rem] font-medium hover:bg-white/20 transition-colors cursor-pointer"
 									>
 										Demander un devis
-									</a>
+									</ContactButton>
 								</div>
 							</ScrollReveal>
 						</div>

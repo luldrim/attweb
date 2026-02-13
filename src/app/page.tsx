@@ -16,7 +16,7 @@ export default function Home() {
 			<SmoothScroll />
 			<ContactModal />
 			<Header />
-			<main className="relative z-10 bg-background">
+			<main className="bg-background">
 				<Hero />
 				<About />
 				<Projects />

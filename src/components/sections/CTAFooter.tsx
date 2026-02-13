@@ -4,7 +4,7 @@ import { COMPANY, FOOTER_LEGAL } from "@/lib/constants";
 
 export default function CTAFooter() {
 	return (
-		<footer id="contact" data-header-dark className="sticky bottom-0 h-dvh z-0">
+		<footer id="contact" className="sticky bottom-0 h-dvh z-0">
 			<div className="relative w-full h-full">
 				{/* Background image */}
 				<Image
@@ -57,39 +57,42 @@ export default function CTAFooter() {
 									</p>
 								</div>
 
-								{/* Contact */}
-								<div>
-									<h4 className="text-[0.75rem] md:text-[0.8125rem] font-semibold text-white mb-2 md:mb-3">Contact</h4>
-									<ul className="space-y-1.5 text-[0.6875rem] md:text-[0.75rem] text-white/40">
-										<li>
-											<a href={COMPANY.phoneHref} className="hover:text-white/70 transition-colors">
-												{COMPANY.phone}
-											</a>
-										</li>
-										<li>
-											<a href={`mailto:${COMPANY.email}`} className="hover:text-white/70 transition-colors">
-												{COMPANY.email}
-											</a>
-										</li>
-										<li className="hidden md:list-item">{COMPANY.address}</li>
-									</ul>
-								</div>
-
-								{/* Legal */}
-								<div>
-									<h4 className="text-[0.75rem] md:text-[0.8125rem] font-semibold text-white mb-2 md:mb-3">Informations</h4>
-									<ul className="space-y-1.5">
-										{FOOTER_LEGAL.map((item) => (
-											<li key={item.label}>
-												<a
-													href={item.href}
-													className="text-[0.6875rem] md:text-[0.75rem] text-white/40 hover:text-white/70 transition-colors"
-												>
-													{item.label}
+								{/* Contact + Legal — 2 cols on mobile, separate on desktop */}
+								<div className="grid grid-cols-2 md:contents gap-4">
+									{/* Contact */}
+									<div>
+										<h4 className="text-[0.75rem] md:text-[0.8125rem] font-semibold text-white mb-2 md:mb-3">Contact</h4>
+										<ul className="space-y-1.5 text-[0.6875rem] md:text-[0.75rem] text-white/40">
+											<li>
+												<a href={COMPANY.phoneHref} className="hover:text-white/70 transition-colors">
+													{COMPANY.phone}
 												</a>
 											</li>
-										))}
-									</ul>
+											<li>
+												<a href={`mailto:${COMPANY.email}`} className="hover:text-white/70 transition-colors">
+													{COMPANY.email}
+												</a>
+											</li>
+											<li className="hidden md:list-item">{COMPANY.address}</li>
+										</ul>
+									</div>
+
+									{/* Legal */}
+									<div>
+										<h4 className="text-[0.75rem] md:text-[0.8125rem] font-semibold text-white mb-2 md:mb-3">Informations</h4>
+										<ul className="space-y-1.5">
+											{FOOTER_LEGAL.map((item) => (
+												<li key={item.label}>
+													<a
+														href={item.href}
+														className="text-[0.6875rem] md:text-[0.75rem] text-white/40 hover:text-white/70 transition-colors"
+													>
+														{item.label}
+													</a>
+												</li>
+											))}
+										</ul>
+									</div>
 								</div>
 							</div>
 

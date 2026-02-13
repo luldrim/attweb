@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 
@@ -6,10 +6,6 @@ const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
 });
-
-export const viewport: Viewport = {
-	themeColor: "#ffffff",
-};
 
 export const metadata: Metadata = {
 	title: "Atout Travaux | Maître d'œuvre - Auvergne-Rhône-Alpes",

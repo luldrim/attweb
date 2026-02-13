@@ -13,15 +13,22 @@ export default function Header() {
 		const onScroll = () => {
 			setIsScrolled(window.scrollY > 50);
 
-			const darkSections = document.querySelectorAll("[data-header-dark]");
 			let overDark = false;
+
+			// Check data-header-dark sections (non-sticky content like BeforeAfter)
+			const darkSections = document.querySelectorAll("[data-header-dark]");
 			for (const section of darkSections) {
 				const rect = section.getBoundingClientRect();
-				if (rect.top <= 80 && rect.bottom >= 0) {
+				if (rect.top <= 80 && rect.bottom >= 80) {
 					overDark = true;
 					break;
 				}
 			}
+
+			// Check if scrolled to footer area
+			const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100;
+			if (atBottom) overDark = true;
+
 			setIsOverDark(overDark);
 		};
 		window.addEventListener("scroll", onScroll, { passive: true });

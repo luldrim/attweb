@@ -21,6 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="fr">
 			<head>
+				<meta name="theme-color" content="#f7f7f7" />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 			</head>
 			<body className={`${geistSans.variable} antialiased`}>{children}</body>

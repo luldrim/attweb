@@ -144,7 +144,7 @@ export default function Hero() {
 							].map((src, i) => (
 								<div
 									key={i}
-									className={`w-13 h-13 rounded-full border-2 border-white overflow-hidden transition-[margin] duration-300 ease-out ${i > 0 ? "-ml-[22px] group-hover/badges:-ml-1.5" : ""}`}
+									className={`w-10 h-10 md:w-13 md:h-13 rounded-full border-2 border-white overflow-hidden transition-[margin] duration-300 ease-out ${i > 0 ? "-ml-[18px] md:-ml-[22px] group-hover/badges:md:-ml-1.5" : ""}`}
 								>
 									<Image
 										src={src}
@@ -156,7 +156,7 @@ export default function Hero() {
 								</div>
 							))}
 						</div>
-						<span className="text-[1.0625rem] text-white leading-snug">
+						<span className="text-[0.8125rem] md:text-[1.0625rem] text-white leading-snug">
 							Plus de 15 000 m²
 							<br />
 							de travaux finis

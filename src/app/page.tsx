@@ -25,8 +25,6 @@ export default function Home() {
 				<BeforeAfter />
 				<FAQ />
 			</main>
-			{/* Spacer — creates scroll room for footer reveal */}
-			<div id="contact" data-header-dark className="h-dvh" />
 			<CTAFooter />
 		</>
 	);

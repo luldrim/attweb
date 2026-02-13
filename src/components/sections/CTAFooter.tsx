@@ -4,7 +4,7 @@ import { COMPANY, FOOTER_LEGAL } from "@/lib/constants";
 
 export default function CTAFooter() {
 	return (
-		<footer className="fixed bottom-0 inset-x-0 h-dvh z-0">
+		<footer id="contact" data-header-dark className="sticky bottom-0 h-dvh z-0">
 			<div className="relative w-full h-full">
 				{/* Background image */}
 				<Image

@@ -8,6 +8,44 @@ import { openContactModal } from "@/components/ui/ContactModal";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
+const CHAR_STAGGER = 0.02;
+const CHAR_DURATION = 0.35;
+const BLUR_AMOUNT = "8px";
+
+function BlurReveal({
+	text,
+	delay = 0,
+	className,
+	as: Tag = "span",
+}: {
+	text: string;
+	delay?: number;
+	className?: string;
+	as?: "span" | "h1";
+}) {
+	const chars = text.split("");
+
+	return (
+		<Tag className={className}>
+			{chars.map((char, i) => (
+				<motion.span
+					key={i}
+					initial={{ opacity: 0, filter: `blur(${BLUR_AMOUNT})` }}
+					animate={{ opacity: 1, filter: "blur(0px)" }}
+					transition={{
+						duration: CHAR_DURATION,
+						delay: delay + i * CHAR_STAGGER,
+						ease: [0.19, 1, 0.22, 1],
+					}}
+					className="inline-block whitespace-pre"
+				>
+					{char}
+				</motion.span>
+			))}
+		</Tag>
+	);
+}
+
 export default function Hero() {
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
@@ -15,13 +53,20 @@ export default function Hero() {
 		offset: ["start start", "end start"],
 	});
 
-	// Parallax: image moves slower than scroll
 	const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 	const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
+	const labelText = "#1 Maître d'œuvre en Auvergne-Rhône-Alpes";
+	const line1 = "Construisons votre";
+	const line2 = "projet de vie";
+
+	const labelDelay = 0.3;
+	const line1Delay = labelDelay + labelText.length * CHAR_STAGGER + 0.1;
+	const line2Delay = line1Delay + line1.length * CHAR_STAGGER;
+	const buttonDelay = line2Delay + line2.length * CHAR_STAGGER + 0.15;
+
 	return (
 		<section id="accueil" ref={sectionRef} className="p-2.5 md:p-3 h-screen min-h-[600px]">
-			{/* Rounded image container */}
 			<motion.div
 				initial={{ scale: 1.05, opacity: 0 }}
 				animate={{ scale: 1, opacity: 1 }}
@@ -43,72 +88,78 @@ export default function Hero() {
 					/>
 				</motion.div>
 
-				{/* Subtle gradient overlay */}
 				<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
 
-				{/* Content — centered */}
+				{/* Content */}
 				<Container className="relative z-10 h-full flex flex-col items-center justify-center text-center">
 					{/* Label */}
-					<motion.span
-						initial={{ opacity: 0, y: 20 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.7, delay: 0.5, ease }}
+					<BlurReveal
+						text={labelText}
+						delay={labelDelay}
 						className="text-[0.8125rem] md:text-[0.875rem] text-white/70 tracking-wide mb-5"
-					>
-						#1 Maître d&apos;œuvre en Auvergne-Rhône-Alpes
-					</motion.span>
+					/>
 
-					{/* Main heading */}
-					<motion.h1
-						initial={{ opacity: 0, y: 30 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: 0.7, ease }}
-						className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5rem] font-light text-white leading-[1.1] tracking-tight max-w-[800px]"
-					>
-						Construisons votre
-						<br />
-						projet de vie
-					</motion.h1>
+					{/* Heading — per-line blur reveal */}
+					<div className="text-[2.75rem] sm:text-[3.5rem] md:text-[4.5rem] lg:text-[5rem] font-light text-white leading-[1.1] tracking-tight max-w-[800px]">
+						<BlurReveal text={line1} delay={line1Delay} as="h1" className="block" />
+						<BlurReveal text={line2} delay={line2Delay} className="block" />
+					</div>
 
-					{/* Single CTA button — white pill */}
+					{/* CTA button */}
 					<motion.button
-						initial={{ opacity: 0, y: 20 }}
+						initial={{ opacity: 0, y: 15 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.7, delay: 1.0, ease }}
+						transition={{
+							duration: 0.7,
+							delay: buttonDelay,
+							ease,
+						}}
 						onClick={openContactModal}
-						className="mt-8 md:mt-10 inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-full text-[0.9375rem] font-medium hover:bg-white/90 transition-colors cursor-pointer"
+						className="group mt-8 md:mt-10 inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-full text-[0.9375rem] font-medium overflow-hidden hover:bg-white/90 transition-colors duration-200 cursor-pointer"
 					>
-						Demander un devis
+						<span className="relative block overflow-hidden">
+							<span className="block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
+								Demander un devis
+							</span>
+							<span className="absolute top-full left-0 block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full" aria-hidden="true">
+								Demander un devis
+							</span>
+						</span>
 					</motion.button>
 				</Container>
 
-				{/* Bottom bar — trust badge (left) */}
+				{/* Bottom bar */}
 				<Container className="absolute bottom-6 md:bottom-8 left-0 right-0 z-10 flex items-end justify-between">
 					<motion.div
 						initial={{ opacity: 0, y: 15 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.7, delay: 1.3, ease }}
+						transition={{ duration: 0.7, delay: buttonDelay + 0.3, ease }}
 						className="flex items-center gap-3"
 					>
-						<div className="flex -space-x-2">
+						<div className="group/badges flex cursor-pointer">
 							{[
-								"https://framerusercontent.com/images/oDC12RKl3RMQUdu2JGGhxj544M.jpeg",
-								"https://framerusercontent.com/images/ZokFTvIUZIDAmlsADCohr7aSmA.jpeg",
+								"https://framerusercontent.com/images/DFpdCiQV48a6W3GFDaN4xOTZp0.jpeg",
+								"https://framerusercontent.com/images/vqcV12mC7DZwiVH2m9j6Ud0zf8.jpeg",
 								"https://framerusercontent.com/images/2Y0ya9oktSQl8lubjb0qzVo77Ts.jpeg",
 							].map((src, i) => (
-								<div key={i} className="w-8 h-8 rounded-full border-2 border-white/40 overflow-hidden">
+								<div
+									key={i}
+									className={`w-13 h-13 rounded-full border-2 border-white overflow-hidden transition-[margin] duration-300 ease-out ${i > 0 ? "-ml-[22px] group-hover/badges:-ml-1.5" : ""}`}
+								>
 									<Image
 										src={src}
 										alt=""
-										width={32}
-										height={32}
+										width={52}
+										height={52}
 										className="object-cover w-full h-full"
 									/>
 								</div>
 							))}
 						</div>
-						<span className="text-[0.8125rem] text-white/60">
-							Plus de 500 projets réalisés
+						<span className="text-[1.0625rem] text-white leading-snug">
+							Plus de 15 000 m²
+							<br />
+							de travaux finis
 						</span>
 					</motion.div>
 				</Container>

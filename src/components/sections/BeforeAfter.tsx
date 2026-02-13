@@ -7,7 +7,7 @@ import {
 	useScroll,
 	useTransform,
 } from "framer-motion";
-import { openContactModal } from "@/components/ui/ContactModal";
+import ContactButton from "@/components/ui/ContactButton";
 
 export default function BeforeAfter() {
 	const [expertOpen, setExpertOpen] = useState(false);
@@ -159,12 +159,9 @@ export default function BeforeAfter() {
 										<p className="text-muted text-[0.75rem] leading-snug">
 											Suivi qualité &amp; délais
 										</p>
-										<button
-											onClick={openContactModal}
-											className="inline-flex items-center justify-center px-4 py-1.5 bg-foreground text-white rounded-full text-[0.75rem] font-medium hover:bg-foreground/90 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-										>
+										<ContactButton variant="secondary" className="px-4 py-1.5 text-[0.75rem] whitespace-nowrap shrink-0">
 											Contactez-moi
-										</button>
+										</ContactButton>
 									</div>
 								</div>
 							</div>

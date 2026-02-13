@@ -33,10 +33,10 @@ export default function CTAFooter() {
 							vous accompagne à chaque étape.
 						</p>
 						<div className="flex flex-col sm:flex-row gap-3 justify-center">
-							<ContactButton className="inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-xl text-[0.9375rem] font-medium hover:bg-white/90 transition-colors cursor-pointer">
+							<ContactButton variant="white" size="lg">
 								Contactez-nous
 							</ContactButton>
-							<ContactButton className="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white border border-white/20 rounded-xl text-[0.9375rem] font-medium hover:bg-white/20 transition-colors cursor-pointer">
+							<ContactButton variant="glass" size="lg">
 								Demander un devis
 							</ContactButton>
 						</div>

@@ -71,9 +71,7 @@ export default function About() {
 						<p className="text-[0.9375rem] text-foreground leading-relaxed mb-5">
 							Un processus fluide et une attention au détail pour transformer vos idées en espaces de vie exceptionnels.
 						</p>
-						<ContactButton
-							className="inline-flex items-center justify-center px-7 py-3 bg-foreground text-white rounded-full text-[0.9375rem] font-medium hover:bg-foreground/90 transition-colors cursor-pointer"
-						>
+						<ContactButton variant="secondary">
 							Demander un devis
 						</ContactButton>
 					</ScrollReveal>

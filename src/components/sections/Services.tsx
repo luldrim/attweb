@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { SERVICES } from "@/lib/constants";
-import { openContactModal } from "@/components/ui/ContactModal";
+import ContactButton from "@/components/ui/ContactButton";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -139,12 +139,9 @@ export default function Services() {
 												{service.description}
 											</p>
 											{/* CTA */}
-											<button
-												onClick={openContactModal}
-												className="inline-flex items-center justify-center px-6 py-2.5 bg-white text-foreground rounded-full text-[0.9375rem] font-medium hover:bg-white/90 transition-colors cursor-pointer"
-											>
+											<ContactButton variant="white" size="sm">
 												Demander un devis
-											</button>
+											</ContactButton>
 										</div>
 									</motion.div>
 								</motion.div>

@@ -1,17 +1,24 @@
 "use client";
 
+import Button from "./Button";
 import { openContactModal } from "./ContactModal";
 
-export default function ContactButton({
-	children,
-	className,
-}: {
-	children: React.ReactNode;
+type ContactButtonProps = {
+	variant?: "primary" | "secondary" | "white" | "glass" | "outline";
+	size?: "sm" | "md" | "lg";
 	className?: string;
-}) {
+	children: React.ReactNode;
+};
+
+export default function ContactButton({
+	variant = "primary",
+	size = "md",
+	className,
+	children,
+}: ContactButtonProps) {
 	return (
-		<button onClick={openContactModal} className={className}>
+		<Button variant={variant} size={size} className={className} onClick={openContactModal}>
 			{children}
-		</button>
+		</Button>
 	);
 }

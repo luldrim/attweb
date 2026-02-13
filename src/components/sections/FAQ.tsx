@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import Container from "@/components/ui/Container";
-import { openContactModal } from "@/components/ui/ContactModal";
+import ContactButton from "@/components/ui/ContactButton";
 import { FAQ_ITEMS } from "@/lib/constants";
 
 function AccordionItem({
@@ -138,12 +138,9 @@ export default function FAQ() {
 								<h5 className="text-white text-[1.125rem] font-medium mb-3">
 									Encore une question ?
 								</h5>
-								<button
-									onClick={openContactModal}
-									className="inline-flex items-center justify-center px-6 py-2.5 bg-white text-foreground rounded-full text-[0.875rem] font-medium hover:bg-white/90 transition-colors cursor-pointer"
-								>
+								<ContactButton variant="white" size="sm">
 									Contactez-nous
-								</button>
+								</ContactButton>
 							</div>
 						</div>
 					</div>

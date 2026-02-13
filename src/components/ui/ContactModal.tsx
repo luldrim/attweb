@@ -243,9 +243,16 @@ export default function ContactModal() {
 									</div>
 									<button
 										type="submit"
-										className="w-full px-6 py-3.5 bg-foreground text-white rounded-lg text-[0.9375rem] font-medium hover:bg-foreground/90 transition-colors cursor-pointer mt-auto"
+										className="group w-full px-6 py-3.5 bg-foreground text-white rounded-full text-[0.9375rem] font-medium overflow-hidden hover:bg-foreground/90 transition-colors duration-200 cursor-pointer mt-auto"
 									>
-										Envoyer
+										<span className="relative block overflow-hidden">
+											<span className="block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
+												Envoyer
+											</span>
+											<span className="absolute top-full left-0 block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full" aria-hidden="true">
+												Envoyer
+											</span>
+										</span>
 									</button>
 								</motion.form>
 							)}

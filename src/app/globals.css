@@ -63,7 +63,7 @@
 }
 
 html {
-	background: var(--foreground);
+	background: var(--background);
 	overflow-x: hidden;
 }
 

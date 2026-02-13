@@ -25,7 +25,7 @@ export default function Services() {
 	return (
 		<section id="services" className="px-2.5 md:px-3">
 			{/* Dark card with rounded corners */}
-			<div className="bg-foreground rounded-[20px] md:rounded-[24px] py-16 md:py-24 px-6 md:px-10 lg:px-16">
+			<div data-header-dark className="bg-foreground rounded-[20px] md:rounded-[24px] py-16 md:py-24 px-6 md:px-10 lg:px-16">
 				<div className="max-w-[1480px] mx-auto">
 					{/* Heading */}
 					<div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-14 md:mb-20">

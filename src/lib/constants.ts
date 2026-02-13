@@ -199,5 +199,4 @@ export const FOOTER_SERVICES = [
 export const FOOTER_LEGAL = [
 	{ label: "Mentions légales", href: "#" },
 	{ label: "Politique de confidentialité", href: "#" },
-	{ label: "CGV", href: "#" },
 ] as const;

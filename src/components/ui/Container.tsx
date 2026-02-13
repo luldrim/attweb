@@ -15,7 +15,7 @@ export default function Container<T extends React.ElementType = "div">({
 	const Component = as || "div";
 	return (
 		<Component
-			className={cn("mx-auto max-w-[1480px] px-6 md:px-8 lg:px-12", className)}
+			className={cn("mx-auto max-w-[1480px] px-4 md:px-8 lg:px-12", className)}
 			{...props}
 		>
 			{children}

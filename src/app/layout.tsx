@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
@@ -7,12 +6,6 @@ const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-	title: "Atout Travaux | Maître d'œuvre - Auvergne-Rhône-Alpes",
-	description:
-		"Atout Travaux, maître d'œuvre tous corps d'état en Auvergne-Rhône-Alpes. Construction, rénovation et aménagement de vos projets avec un interlocuteur unique.",
-};
 
 export default function RootLayout({
 	children,

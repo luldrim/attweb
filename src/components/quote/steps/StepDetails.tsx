@@ -4,6 +4,7 @@ import { useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 import { useQuote } from "../quote-context";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
@@ -15,11 +16,15 @@ function FileUploadZone({
 	field,
 	accept,
 	index,
+	optionalText,
+	uploadText,
 }: {
 	label: string;
 	field: "plans" | "photos";
 	accept: string;
 	index: number;
+	optionalText: string;
+	uploadText: string;
 }) {
 	const { state, dispatch } = useQuote();
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -52,7 +57,7 @@ function FileUploadZone({
 		>
 			<label className="block text-[0.875rem] font-medium text-foreground mb-2">
 				{label}{" "}
-				<span className="text-muted font-normal">(facultatif)</span>
+				<span className="text-muted font-normal">{optionalText}</span>
 			</label>
 
 			{/* Drop zone */}
@@ -91,7 +96,7 @@ function FileUploadZone({
 					<line x1="12" y1="3" x2="12" y2="15" />
 				</svg>
 				<span className="text-[0.875rem] text-muted">
-					Cliquez ou déposez vos fichiers
+					{uploadText}
 				</span>
 			</button>
 
@@ -128,7 +133,7 @@ function FileUploadZone({
 								}
 								className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-foreground text-white rounded-full text-[0.6875rem] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
 							>
-								×
+								&times;
 							</button>
 						</div>
 					))}
@@ -153,6 +158,7 @@ function FileImagePreview({ file }: { file: File }) {
 }
 
 export default function StepDetails() {
+	const t = useTranslations("quote.details");
 	const { state, dispatch } = useQuote();
 
 	return (
@@ -163,10 +169,10 @@ export default function StepDetails() {
 				transition={{ duration: 0.3, delay: 0.05, ease }}
 			>
 				<h2 className="text-[1.75rem] md:text-[2rem] font-light text-foreground leading-tight tracking-tight">
-					Détails du projet
+					{t("heading")}
 				</h2>
 				<p className="text-muted text-[0.9375rem] mt-1">
-					Toutes ces informations sont facultatives.
+					{t("subheading")}
 				</p>
 			</motion.div>
 
@@ -180,8 +186,8 @@ export default function StepDetails() {
 					htmlFor="quote-description"
 					className="block text-[0.875rem] font-medium text-foreground mb-2"
 				>
-					Description du projet{" "}
-					<span className="text-muted font-normal">(facultatif)</span>
+					{t("descriptionLabel")}{" "}
+					<span className="text-muted font-normal">{t("descriptionOptional")}</span>
 				</label>
 				<textarea
 					id="quote-description"
@@ -195,22 +201,26 @@ export default function StepDetails() {
 						})
 					}
 					className="w-full px-4 py-3 bg-white rounded-lg border border-black/10 text-[0.9375rem] text-foreground placeholder:text-muted/40 outline-none focus:border-foreground/30 transition-colors resize-none"
-					placeholder="Décrivez votre projet, vos attentes, vos contraintes..."
+					placeholder={t("descriptionPlaceholder")}
 				/>
 			</motion.div>
 
 			{/* File uploads */}
 			<FileUploadZone
-				label="Plans ou croquis"
+				label={t("plansLabel")}
 				field="plans"
 				accept=".pdf,.jpg,.jpeg,.png,.dwg"
 				index={1}
+				optionalText={t("uploadOptional")}
+				uploadText={t("uploadText")}
 			/>
 			<FileUploadZone
-				label="Photos du site"
+				label={t("photosLabel")}
 				field="photos"
 				accept=".jpg,.jpeg,.png,.webp,.heic"
 				index={2}
+				optionalText={t("uploadOptional")}
+				uploadText={t("uploadText")}
 			/>
 		</div>
 	);

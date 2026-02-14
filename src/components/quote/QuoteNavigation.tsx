@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useQuote } from "./quote-context";
 
 function Spinner() {
@@ -28,13 +29,14 @@ function Spinner() {
 }
 
 export default function QuoteNavigation() {
+	const t = useTranslations("quote");
 	const { state, dispatch, submitCurrentStep } = useQuote();
 	const { currentStep, loading } = state;
 
 	if (currentStep >= 3) return null;
 
 	const isLastStep = currentStep === 2;
-	const label = isLastStep ? "Envoyer la demande" : "Continuer";
+	const label = isLastStep ? t("submitButton") : t("continueButton");
 
 	return (
 		<div className="sticky bottom-0 bg-background border-t border-black/5 px-6 md:px-10 py-4 flex items-center justify-between gap-4">
@@ -45,7 +47,7 @@ export default function QuoteNavigation() {
 					disabled={loading}
 					className="px-6 py-3 text-[0.9375rem] font-medium text-foreground hover:text-foreground/70 transition-colors cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed"
 				>
-					Retour
+					{t("backButton")}
 				</button>
 			) : (
 				<div />

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
 import ContactButton from "@/components/ui/ContactButton";
-import { STATS, FEATURES, TESTIMONIALS } from "@/lib/constants";
+import { getTranslations, getMessages } from "next-intl/server";
 
 function DotsIcon() {
 	return (
@@ -54,8 +54,14 @@ function FeatureCard({ number, title, description }: { number: string; title: st
 	);
 }
 
-export default function About() {
-	const testimonial = TESTIMONIALS[0];
+export default async function About() {
+	const t = await getTranslations("about");
+	const tTestimonials = await getTranslations("testimonials");
+	const testimonials = tTestimonials.raw("items") as Array<{ name: string; role: string; quote: string; rating: number }>;
+	const testimonial = testimonials[0];
+	const messages = await getMessages();
+	const statsArr = messages.stats as Array<{ value: string; label: string }>;
+	const featuresArr = messages.features as Array<{ number: string; title: string; description: string }>;
 
 	return (
 		<section id="apropos" className="py-20 md:py-28">
@@ -64,15 +70,15 @@ export default function About() {
 				<div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 mb-12 md:mb-16">
 					<ScrollReveal>
 						<h2 className="text-[2.25rem] md:text-[3rem] lg:text-[3.5rem] font-light text-foreground leading-[1.1] tracking-tight max-w-[700px]">
-							Des projets discrets aux réalisations audacieuses — un savoir-faire qui rassemble
+							{t("heading")}
 						</h2>
 					</ScrollReveal>
 					<ScrollReveal delay={0.15} className="lg:text-right lg:max-w-[340px] flex-shrink-0">
 						<p className="text-[0.9375rem] text-foreground leading-relaxed mb-5">
-							Un processus fluide et une attention au détail pour transformer vos idées en espaces de vie exceptionnels.
+							{t("subheading")}
 						</p>
 						<ContactButton variant="secondary">
-							Demander un devis
+							{t("ctaButton")}
 						</ContactButton>
 					</ScrollReveal>
 				</div>
@@ -123,7 +129,7 @@ export default function About() {
 
 					{/* Feature 01 — row 1, col 3 */}
 					<StaggerItem>
-						<FeatureCard {...FEATURES[0]} />
+						<FeatureCard {...featuresArr[0]} />
 					</StaggerItem>
 
 					{/* Image 2 — row 1, col 4 */}
@@ -141,7 +147,7 @@ export default function About() {
 
 					{/* Feature 02 — row 2, col 2 */}
 					<StaggerItem>
-						<FeatureCard {...FEATURES[1]} />
+						<FeatureCard {...featuresArr[1]} />
 					</StaggerItem>
 
 					{/* Image 3 — row 2, col 3 */}
@@ -159,13 +165,13 @@ export default function About() {
 
 					{/* Feature 03 — row 2, col 4 */}
 					<StaggerItem>
-						<FeatureCard {...FEATURES[2]} />
+						<FeatureCard {...featuresArr[2]} />
 					</StaggerItem>
 				</StaggerContainer>
 
 				{/* Stats row */}
 				<StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8" stagger={0.1}>
-					{STATS.map((stat) => (
+					{statsArr.map((stat) => (
 						<StaggerItem key={stat.label}>
 							<div className="text-[2.5rem] md:text-[3rem] font-light text-foreground leading-none tracking-tight">
 								{stat.value}

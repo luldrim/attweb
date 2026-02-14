@@ -9,6 +9,7 @@ import {
 	type ReactNode,
 } from "react";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 /* ─── Types ─── */
 
@@ -66,34 +67,36 @@ export type QuoteAction =
 
 /* ─── Validation ─── */
 
+type TranslateFn = (key: string) => string;
+
 export function validateStep(
 	step: number,
-	data: QuoteFormData
+	data: QuoteFormData,
+	t: TranslateFn
 ): Record<string, string> {
 	const errors: Record<string, string> = {};
 
 	if (step === 0) {
-		if (!data.firstName.trim()) errors.firstName = "Prénom requis";
-		if (!data.lastName.trim()) errors.lastName = "Nom requis";
-		if (!data.phone.trim()) errors.phone = "Téléphone requis";
+		if (!data.firstName.trim()) errors.firstName = t("firstNameRequired");
+		if (!data.lastName.trim()) errors.lastName = t("lastNameRequired");
+		if (!data.phone.trim()) errors.phone = t("phoneRequired");
 		if (!data.email.trim()) {
-			errors.email = "Email requis";
+			errors.email = t("emailRequired");
 		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-			errors.email = "Email invalide";
+			errors.email = t("emailInvalid");
 		}
 		if (data.clientType === "professionnel" && !data.companyName.trim()) {
-			errors.companyName = "Nom d'entreprise requis";
+			errors.companyName = t("companyRequired");
 		}
 		if (!data.rgpdAccepted) {
-			errors.rgpdAccepted =
-				"Vous devez accepter la politique de confidentialité";
+			errors.rgpdAccepted = t("rgpdRequired");
 		}
 	}
 
 	if (step === 1) {
 		if (!data.projectType)
-			errors.projectType = "Choisissez un type de projet";
-		if (!data.location.trim()) errors.location = "Localisation requise";
+			errors.projectType = t("projectTypeRequired");
+		if (!data.location.trim()) errors.location = t("locationRequired");
 	}
 
 	return errors;
@@ -234,9 +237,12 @@ function quoteReducer(state: QuoteState, action: QuoteAction): QuoteState {
 
 /* ─── Async step handlers ─── */
 
+type ErrorTranslateFn = (key: string) => string;
+
 async function submitStep0(
 	state: QuoteState,
-	dispatch: Dispatch<QuoteAction>
+	dispatch: Dispatch<QuoteAction>,
+	tErr: ErrorTranslateFn
 ): Promise<boolean> {
 	const { data } = state;
 
@@ -257,9 +263,7 @@ async function submitStep0(
 
 		if (!res.ok) {
 			const body = await res.json().catch(() => ({})) as { error?: string };
-			throw new Error(
-				body.error || "Erreur lors de la sauvegarde du contact"
-			);
+			throw new Error(body.error || tErr("contactSave"));
 		}
 
 		const { contactId } = (await res.json()) as { contactId: string };
@@ -268,9 +272,7 @@ async function submitStep0(
 		return true;
 	} catch (err) {
 		toast.error(
-			err instanceof Error
-				? err.message
-				: "Erreur lors de la sauvegarde du contact"
+			err instanceof Error ? err.message : tErr("contactSave")
 		);
 		return false;
 	} finally {
@@ -280,12 +282,13 @@ async function submitStep0(
 
 async function submitStep1(
 	state: QuoteState,
-	dispatch: Dispatch<QuoteAction>
+	dispatch: Dispatch<QuoteAction>,
+	tErr: ErrorTranslateFn
 ): Promise<boolean> {
 	const { data, contactId, demandeId } = state;
 
 	if (!contactId) {
-		toast.error("Contact non enregistré. Retournez à l'étape précédente.");
+		toast.error(tErr("contactMissing"));
 		return false;
 	}
 
@@ -305,9 +308,7 @@ async function submitStep1(
 
 		if (!res.ok) {
 			const body = await res.json().catch(() => ({})) as { error?: string };
-			throw new Error(
-				body.error || "Erreur lors de la création de la demande"
-			);
+			throw new Error(body.error || tErr("demandCreate"));
 		}
 
 		const result = (await res.json()) as { demandeId: string };
@@ -318,9 +319,7 @@ async function submitStep1(
 		return true;
 	} catch (err) {
 		toast.error(
-			err instanceof Error
-				? err.message
-				: "Erreur lors de la création de la demande"
+			err instanceof Error ? err.message : tErr("demandCreate")
 		);
 		return false;
 	} finally {
@@ -330,12 +329,14 @@ async function submitStep1(
 
 async function submitStep2(
 	state: QuoteState,
-	dispatch: Dispatch<QuoteAction>
+	dispatch: Dispatch<QuoteAction>,
+	tErr: ErrorTranslateFn,
+	successMessage: string
 ): Promise<boolean> {
 	const { data, demandeId } = state;
 
 	if (!demandeId) {
-		toast.error("Demande non créée. Retournez à l'étape précédente.");
+		toast.error(tErr("demandMissing"));
 		return false;
 	}
 
@@ -360,19 +361,15 @@ async function submitStep2(
 
 		if (!res.ok) {
 			const body = await res.json().catch(() => ({})) as { error?: string };
-			throw new Error(
-				body.error || "Erreur lors de la mise à jour de la demande"
-			);
+			throw new Error(body.error || tErr("demandUpdate"));
 		}
 
 		dispatch({ type: "SET_SUBMITTED" });
-		toast.success("Votre demande de devis a bien été envoyée !");
+		toast.success(successMessage);
 		return true;
 	} catch (err) {
 		toast.error(
-			err instanceof Error
-				? err.message
-				: "Erreur lors de l'envoi de la demande"
+			err instanceof Error ? err.message : tErr("demandSend")
 		);
 		return false;
 	} finally {
@@ -391,27 +388,32 @@ type QuoteContextValue = {
 const QuoteContext = createContext<QuoteContextValue | null>(null);
 
 export function QuoteProvider({ children }: { children: ReactNode }) {
+	const t = useTranslations("quote");
+	const tValidation = useTranslations("quote.validation");
+	const tErrors = useTranslations("quote.errors");
 	const [state, dispatch] = useReducer(quoteReducer, initialState);
 
 	const submitCurrentStep = useCallback(async (): Promise<boolean> => {
 		// Validate first
-		const errors = validateStep(state.currentStep, state.data);
+		const errors = validateStep(state.currentStep, state.data, (key) => tValidation(key));
 		if (Object.values(errors).some((e) => e)) {
 			dispatch({ type: "SET_ERRORS", errors });
 			return false;
 		}
 
+		const errFn = (key: string) => tErrors(key);
+
 		switch (state.currentStep) {
 			case 0:
-				return submitStep0(state, dispatch);
+				return submitStep0(state, dispatch, errFn);
 			case 1:
-				return submitStep1(state, dispatch);
+				return submitStep1(state, dispatch, errFn);
 			case 2:
-				return submitStep2(state, dispatch);
+				return submitStep2(state, dispatch, errFn, t("successToast"));
 			default:
 				return false;
 		}
-	}, [state]);
+	}, [state, t, tValidation, tErrors]);
 
 	return (
 		<QuoteContext.Provider value={{ state, dispatch, submitCurrentStep }}>

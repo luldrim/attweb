@@ -3,21 +3,35 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { QUOTE_CAROUSEL_SLIDES } from "@/lib/constants";
+import { useTranslations } from "next-intl";
+import { QUOTE_CAROUSEL_IMAGES } from "@/lib/constants";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function QuoteCarousel() {
+	const tProjects = useTranslations("projects");
+	const tTestimonials = useTranslations("testimonials");
+	const projectItems = tProjects.raw("items") as Array<{ title: string; date: string }>;
+	const testimonialItems = tTestimonials.raw("items") as Array<{ name: string; role: string; quote: string }>;
+
+	const slides = QUOTE_CAROUSEL_IMAGES.map((image, i) => ({
+		image,
+		title: projectItems[i]?.title ?? "",
+		quote: testimonialItems[i]?.quote ?? "",
+		author: testimonialItems[i]?.name ?? "",
+		role: testimonialItems[i]?.role ?? "",
+	}));
+
 	const [current, setCurrent] = useState(0);
 
 	useEffect(() => {
 		const timer = setInterval(() => {
-			setCurrent((prev) => (prev + 1) % QUOTE_CAROUSEL_SLIDES.length);
+			setCurrent((prev) => (prev + 1) % slides.length);
 		}, 6000);
 		return () => clearInterval(timer);
-	}, []);
+	}, [slides.length]);
 
-	const slide = QUOTE_CAROUSEL_SLIDES[current];
+	const slide = slides[current];
 
 	return (
 		<div className="hidden lg:block lg:w-1/2 p-3">
@@ -78,7 +92,7 @@ export default function QuoteCarousel() {
 
 					{/* Dots */}
 					<div className="flex gap-2 mt-8">
-						{QUOTE_CAROUSEL_SLIDES.map((_, i) => (
+						{slides.map((_, i) => (
 							<button
 								key={i}
 								onClick={() => setCurrent(i)}

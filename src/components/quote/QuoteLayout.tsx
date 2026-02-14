@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { QuoteProvider, useQuote } from "./quote-context";
 import QuoteCarousel from "./QuoteCarousel";
 import QuoteProgress from "./QuoteProgress";
@@ -10,7 +11,6 @@ import StepIdentity from "./steps/StepIdentity";
 import StepProject from "./steps/StepProject";
 import StepDetails from "./steps/StepDetails";
 import StepSuccess from "./steps/StepSuccess";
-import { QUOTE_STEPS } from "@/lib/constants";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -30,6 +30,8 @@ const stepVariants = {
 };
 
 function QuoteForm() {
+	const t = useTranslations("quote");
+	const steps = t.raw("steps") as Array<{ title: string; subtitle: string }>;
 	const { state } = useQuote();
 	const { currentStep, direction } = state;
 	const isSuccess = currentStep >= 3;
@@ -48,14 +50,14 @@ function QuoteForm() {
 
 				{!isSuccess && (
 					<span className="text-[0.8125rem] text-muted">
-						Étape {currentStep + 1} sur {QUOTE_STEPS.length}
+						{t("stepLabel", { current: currentStep + 1, total: steps.length })}
 					</span>
 				)}
 
 				<Link
 					href="/"
 					className="p-1.5 text-foreground/40 hover:text-foreground transition-colors"
-					aria-label="Fermer"
+					aria-label={t("closeLabel")}
 				>
 					<svg
 						width="20"

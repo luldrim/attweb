@@ -1,0 +1,330 @@
+{
+  "metadata": {
+    "home": {
+      "title": "Atout Travaux | Maître d'œuvre - Auvergne-Rhône-Alpes",
+      "description": "Atout Travaux, maître d'œuvre tous corps d'état en Auvergne-Rhône-Alpes. Construction, rénovation et aménagement de vos projets avec un interlocuteur unique."
+    },
+    "requestQuote": {
+      "title": "Demander un devis | Atout Travaux",
+      "description": "Obtenez un devis gratuit pour votre projet de construction, rénovation ou aménagement en Auvergne-Rhône-Alpes."
+    }
+  },
+  "company": {
+    "name": "Atout Travaux",
+    "tagline": "Maître d'œuvre — Tous corps d'état",
+    "phone": "04 73 00 00 00",
+    "phoneHref": "tel:+33473000000",
+    "email": "contact@atouttravaux.fr",
+    "address": "15 rue des Bâtisseurs, 63000 Clermont-Ferrand",
+    "region": "Auvergne-Rhône-Alpes"
+  },
+  "nav": {
+    "links": [
+      { "label": "Accueil", "href": "#accueil" },
+      { "label": "Services", "href": "#services" },
+      { "label": "Réalisations", "href": "#realisations" },
+      { "label": "À propos", "href": "#apropos" },
+      { "label": "Témoignages", "href": "#temoignages" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "menuHeading": "CONTACTEZ-NOUS",
+    "menuNavLabel": "Navigation :",
+    "menuImageCaption": "Des réalisations durables, un design intemporel",
+    "menuImageBadge": "Inspirant",
+    "menuCloseLabel": "Fermer le menu",
+    "menuOpenLabel": "Ouvrir le menu"
+  },
+  "hero": {
+    "label": "#1 Maître d'œuvre en Auvergne-Rhône-Alpes",
+    "headline": ["Construisons votre", "projet de vie"],
+    "ctaButton": "Demander un devis",
+    "statsLabel": "Plus de 15 000 m²",
+    "statsSubLabel": "de travaux finis"
+  },
+  "about": {
+    "heading": "Des projets discrets aux réalisations audacieuses — un savoir-faire qui rassemble",
+    "subheading": "Un processus fluide et une attention au détail pour transformer vos idées en espaces de vie exceptionnels.",
+    "ctaButton": "Demander un devis"
+  },
+  "stats": [
+    { "value": "15+", "label": "Années d'expérience" },
+    { "value": "500+", "label": "Projets réalisés" },
+    { "value": "98%", "label": "Clients satisfaits" },
+    { "value": "50+", "label": "Artisans partenaires" }
+  ],
+  "features": [
+    {
+      "number": "01",
+      "title": "Souci du détail",
+      "description": "Plus de 500 projets livrés avec un niveau d'exigence qui fait la différence à chaque étape."
+    },
+    {
+      "number": "02",
+      "title": "Matériaux durables",
+      "description": "Plus de 500 projets réalisés avec des matériaux sélectionnés pour leur qualité et leur longévité."
+    },
+    {
+      "number": "03",
+      "title": "L'esthétique au service du projet",
+      "description": "Plus de 500 projets livrés où le beau rencontre le fonctionnel pour des résultats concrets."
+    }
+  ],
+  "services": {
+    "heading": "Notre expertise",
+    "subheading": "Un savoir-faire complet en travaux tous corps d'état — chaque prestation est pensée pour la qualité, la durabilité et le respect de vos attentes.",
+    "ctaButton": "Demander un devis",
+    "items": [
+      {
+        "number": "01",
+        "title": "Gros œuvre & Construction",
+        "subtitle": "Des fondations solides",
+        "stat": "200+",
+        "statLabel": "/ Projets de construction livrés",
+        "description": "Construction de structures durables : fondations, murs porteurs, dalles et charpentes. Un savoir-faire éprouvé pour des bâtiments qui traversent le temps."
+      },
+      {
+        "number": "02",
+        "title": "Rénovation complète",
+        "subtitle": "Transformer l'existant",
+        "stat": "150+",
+        "statLabel": "/ Rénovations menées à bien",
+        "description": "Réhabilitation, mise aux normes et modernisation de bâtiments existants. Nous transformons vos espaces avec exigence et respect du bâti."
+      },
+      {
+        "number": "03",
+        "title": "Aménagement intérieur",
+        "subtitle": "Design sur mesure",
+        "stat": "100+",
+        "statLabel": "/ Espaces aménagés",
+        "description": "Création d'intérieurs personnalisés : cloisons, faux-plafonds, revêtements et agencements pensés pour votre confort et votre style de vie."
+      },
+      {
+        "number": "04",
+        "title": "Toiture & Couverture",
+        "subtitle": "Protection durable",
+        "stat": "80+",
+        "statLabel": "/ Toitures réalisées",
+        "description": "Création, réparation et isolation de toitures : tuiles, ardoises, zinc et solutions d'étanchéité pour une protection optimale."
+      },
+      {
+        "number": "05",
+        "title": "Électricité & Plomberie",
+        "subtitle": "Installations fiables",
+        "stat": "120+",
+        "statLabel": "/ Installations réalisées",
+        "description": "Installation et rénovation des réseaux électriques et sanitaires dans le respect des normes en vigueur, pour un confort au quotidien."
+      }
+    ]
+  },
+  "projects": {
+    "heading": "Nos réalisations",
+    "subheading": "Chaque projet est le reflet de notre exigence — intentionnel, soigné et sur mesure.",
+    "partners": ["Réseau Pro BTP", "Qualibat", "Artisans de confiance", "Maisons & Travaux", "FFB Auvergne"],
+    "items": [
+      { "title": "Villa Horizon", "date": "Juil. 2025" },
+      { "title": "Résidence du Lac", "date": "Juin 2025" },
+      { "title": "Loft Moderniste", "date": "Juin 2025" },
+      { "title": "Mas des Collines", "date": "Mai 2025" }
+    ]
+  },
+  "testimonials": {
+    "label": "Témoignages",
+    "heading": "La confiance de nos clients",
+    "subheading": "Des collaborations réfléchies, des résultats concrets — et des espaces qui marquent.",
+    "items": [
+      {
+        "name": "Marie Dupont",
+        "role": "Propriétaire à Lyon",
+        "quote": "Atout Travaux a su transformer notre maison des années 70 en un espace moderne et lumineux. Le suivi du chantier était irréprochable et les délais parfaitement respectés.",
+        "rating": 5
+      },
+      {
+        "name": "Jean-Pierre Martin",
+        "role": "Gérant de restaurant, Clermont-Ferrand",
+        "quote": "Pour la rénovation complète de notre restaurant, nous avions besoin d'un interlocuteur unique. Atout Travaux a coordonné tous les corps de métier avec un professionnalisme remarquable.",
+        "rating": 5
+      },
+      {
+        "name": "Sophie & Laurent Bernard",
+        "role": "Propriétaires à Annecy",
+        "quote": "De la conception à la livraison de notre villa, l'équipe a fait preuve d'un savoir-faire exceptionnel. Le résultat dépasse nos attentes. Nous recommandons sans hésiter.",
+        "rating": 5
+      }
+    ]
+  },
+  "beforeAfter": {
+    "label": "Rénovation complète",
+    "heading": "Transformation cuisine — Clermont\u2011Ferrand",
+    "description": "D'une cuisine vétuste à un espace moderne et fonctionnel, en seulement 6 semaines.",
+    "beforeLabel": "Avant",
+    "afterLabel": "Après",
+    "expert": {
+      "name": "Thomas Durand",
+      "role": "Chef de projet",
+      "tagline": "Suivi qualité & délais",
+      "ctaButton": "Contactez-moi"
+    }
+  },
+  "faq": {
+    "heading": "Des réponses claires",
+    "subheading": "Nous avons répondu aux questions les plus fréquentes pour vous aider à avancer sereinement.",
+    "imageCtaHeading": "Encore une question ?",
+    "imageCtaButton": "Contactez-nous",
+    "items": [
+      {
+        "question": "Quels types de travaux réalisez-vous ?",
+        "answer": "Nous intervenons sur tous corps d'état : gros œuvre, rénovation complète, aménagement intérieur, toiture, électricité, plomberie et menuiserie. Un seul interlocuteur pour l'ensemble de votre projet."
+      },
+      {
+        "question": "Comment se déroule un projet avec Atout Travaux ?",
+        "answer": "Nous commençons par une visite et un diagnostic gratuit, puis nous établissons un devis détaillé. Après validation, nous coordonnons l'ensemble des artisans et assurons un suivi rigoureux jusqu'à la livraison finale."
+      },
+      {
+        "question": "Quelle est la durée moyenne d'un chantier ?",
+        "answer": "La durée varie selon l'ampleur du projet : comptez 2 à 4 semaines pour un aménagement intérieur, 2 à 4 mois pour une rénovation complète. Nous vous communiquons un planning précis avant le démarrage."
+      },
+      {
+        "question": "Proposez-vous un devis gratuit ?",
+        "answer": "Oui, nous réalisons un devis détaillé et gratuit après une visite sur site. Ce devis est transparent, sans frais cachés, et reste valable 3 mois."
+      },
+      {
+        "question": "Quelles garanties offrez-vous ?",
+        "answer": "Tous nos travaux sont couverts par une garantie décennale et une assurance responsabilité civile professionnelle. Nous travaillons exclusivement avec des artisans qualifiés et certifiés."
+      },
+      {
+        "question": "Intervenez-vous en dehors de Clermont-Ferrand ?",
+        "answer": "Oui, nous intervenons sur l'ensemble de la région Auvergne-Rhône-Alpes. N'hésitez pas à nous contacter pour vérifier la disponibilité dans votre secteur."
+      }
+    ]
+  },
+  "ctaFooter": {
+    "preheading": "Démarrons votre projet",
+    "heading": "Prêt à concrétiser vos idées ?",
+    "description": "Contactez-nous pour un devis gratuit et personnalisé. Notre équipe vous accompagne à chaque étape.",
+    "primaryButton": "Contactez-nous",
+    "secondaryButton": "Demander un devis"
+  },
+  "footer": {
+    "contactHeading": "Contact",
+    "legalHeading": "Informations",
+    "copyright": "Tous droits réservés.",
+    "services": ["Gros œuvre", "Rénovation", "Aménagement intérieur", "Électricité & Plomberie", "Menuiserie", "Toiture"],
+    "legal": [
+      { "label": "Mentions légales", "href": "#" },
+      { "label": "Politique de confidentialité", "href": "#" }
+    ]
+  },
+  "contactModal": {
+    "heading": "Contactez-nous",
+    "subheading": "Parlons de votre projet — nous sommes disponibles pour vous accompagner.",
+    "callLabel": "Appelez-nous",
+    "emailLabel": "Email",
+    "addressLabel": "Adresse",
+    "zoneLabel": "Zone",
+    "closeLabel": "Fermer",
+    "form": {
+      "nameLabel": "Nom complet",
+      "namePlaceholder": "Jean Dupont",
+      "emailLabel": "Email",
+      "emailPlaceholder": "jean@exemple.fr",
+      "phoneLabel": "Téléphone",
+      "phonePlaceholder": "06 00 00 00 00",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Décrivez votre projet...",
+      "submitButton": "Envoyer",
+      "successHeading": "Message envoyé",
+      "successMessage": "Nous reviendrons vers vous sous 24h."
+    }
+  },
+  "quote": {
+    "stepLabel": "Étape {current} sur {total}",
+    "closeLabel": "Fermer",
+    "backButton": "Retour",
+    "continueButton": "Continuer",
+    "submitButton": "Envoyer la demande",
+    "steps": [
+      { "title": "Qui êtes-vous ?", "subtitle": "Vos coordonnées" },
+      { "title": "Votre projet", "subtitle": "Type et localisation" },
+      { "title": "Détails", "subtitle": "Description et fichiers" }
+    ],
+    "identity": {
+      "heading": "Qui êtes-vous ?",
+      "subheading": "Commençons par faire connaissance.",
+      "clientTypes": {
+        "particulier": "Particulier",
+        "professionnel": "Professionnel"
+      },
+      "companyLabel": "Nom de l'entreprise",
+      "companyPlaceholder": "Ma Société SARL",
+      "firstNameLabel": "Prénom",
+      "firstNamePlaceholder": "Jean",
+      "lastNameLabel": "Nom",
+      "lastNamePlaceholder": "Dupont",
+      "phoneLabel": "Téléphone",
+      "phonePlaceholder": "06 00 00 00 00",
+      "emailLabel": "Email",
+      "emailPlaceholder": "jean@exemple.fr",
+      "rgpdText": "J'accepte que mes données soient traitées dans le cadre de ma demande de devis conformément à la",
+      "rgpdLink": "politique de confidentialité"
+    },
+    "project": {
+      "heading": "Votre projet",
+      "subheading": "Quel type de travaux envisagez-vous ?",
+      "types": [
+        { "label": "Rénovation", "description": "Moderniser un espace existant" },
+        { "label": "Construction neuve", "description": "Bâtir un nouveau projet" },
+        { "label": "Aménagement intérieur", "description": "Optimiser vos espaces" },
+        { "label": "Extension / Surélévation", "description": "Agrandir votre bien" }
+      ],
+      "surfaceLabel": "Surface approximative",
+      "surfaceOptional": "(facultatif)",
+      "surfacePlaceholder": "120",
+      "surfaceUnit": "m²",
+      "locationLabel": "Localisation du projet",
+      "locationPlaceholder": "Clermont-Ferrand, 63000"
+    },
+    "details": {
+      "heading": "Détails du projet",
+      "subheading": "Toutes ces informations sont facultatives.",
+      "descriptionLabel": "Description du projet",
+      "descriptionOptional": "(facultatif)",
+      "descriptionPlaceholder": "Décrivez votre projet, vos attentes, vos contraintes...",
+      "plansLabel": "Plans ou croquis",
+      "photosLabel": "Photos du site",
+      "uploadOptional": "(facultatif)",
+      "uploadText": "Cliquez ou déposez vos fichiers",
+      "fileSizeError": "{count} fichier(s) ignoré(s) (max 5 Mo par fichier)"
+    },
+    "success": {
+      "heading": "Demande envoyée !",
+      "message": "Merci {firstName}, nous reviendrons vers vous sous 24h avec une proposition personnalisée.",
+      "recapTitle": "Récapitulatif",
+      "nameLabel": "Nom",
+      "emailLabel": "Email",
+      "projectLabel": "Projet",
+      "surfaceLabel": "Surface",
+      "locationLabel": "Localisation",
+      "backButton": "Retour à l'accueil"
+    },
+    "validation": {
+      "firstNameRequired": "Prénom requis",
+      "lastNameRequired": "Nom requis",
+      "phoneRequired": "Téléphone requis",
+      "emailRequired": "Email requis",
+      "emailInvalid": "Email invalide",
+      "companyRequired": "Nom d'entreprise requis",
+      "rgpdRequired": "Vous devez accepter la politique de confidentialité",
+      "projectTypeRequired": "Choisissez un type de projet",
+      "locationRequired": "Localisation requise"
+    },
+    "errors": {
+      "contactSave": "Erreur lors de la sauvegarde du contact",
+      "contactMissing": "Contact non enregistré. Retournez à l'étape précédente.",
+      "demandCreate": "Erreur lors de la création de la demande",
+      "demandMissing": "Demande non créée. Retournez à l'étape précédente.",
+      "demandUpdate": "Erreur lors de la mise à jour de la demande",
+      "demandSend": "Erreur lors de l'envoi de la demande"
+    },
+    "successToast": "Votre demande de devis a bien été envoyée !"
+  }
+}

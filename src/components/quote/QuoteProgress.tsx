@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useQuote } from "./quote-context";
-import { QUOTE_STEPS } from "@/lib/constants";
 
 export default function QuoteProgress() {
+	const t = useTranslations("quote");
+	const steps = t.raw("steps") as Array<{ title: string; subtitle: string }>;
 	const { state } = useQuote();
 	const { currentStep } = state;
 
@@ -12,7 +14,7 @@ export default function QuoteProgress() {
 
 	return (
 		<div className="flex items-center gap-2 px-6 md:px-10 pb-4">
-			{QUOTE_STEPS.map((_, i) => (
+			{steps.map((_, i) => (
 				<div
 					key={i}
 					className="relative h-[3px] rounded-full bg-black/8 overflow-hidden"

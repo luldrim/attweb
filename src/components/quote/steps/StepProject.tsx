@@ -1,12 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useQuote, type ProjectType } from "../quote-context";
-import { QUOTE_PROJECT_TYPES } from "@/lib/constants";
+import { PROJECT_TYPE_VALUES, PROJECT_TYPE_ICONS } from "@/lib/constants";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function StepProject() {
+	const t = useTranslations("quote.project");
+	const types = t.raw("types") as Array<{ label: string; description: string }>;
 	const { state, dispatch } = useQuote();
 	const { projectType, surface, location } = state.data;
 	const errors = state.errors;
@@ -19,10 +22,10 @@ export default function StepProject() {
 				transition={{ duration: 0.3, delay: 0.05, ease }}
 			>
 				<h2 className="text-[1.75rem] md:text-[2rem] font-light text-foreground leading-tight tracking-tight">
-					Votre projet
+					{t("heading")}
 				</h2>
 				<p className="text-muted text-[0.9375rem] mt-1">
-					Quel type de travaux envisagez-vous ?
+					{t("subheading")}
 				</p>
 			</motion.div>
 
@@ -33,16 +36,18 @@ export default function StepProject() {
 				transition={{ duration: 0.3, delay: 0.1, ease }}
 				className="grid grid-cols-2 gap-3"
 			>
-				{QUOTE_PROJECT_TYPES.map((type, i) => {
-					const selected = projectType === type.value;
+				{types.map((type, i) => {
+					const value = PROJECT_TYPE_VALUES[i];
+					const icon = PROJECT_TYPE_ICONS[i];
+					const selected = projectType === value;
 					return (
 						<motion.button
-							key={type.value}
+							key={value}
 							type="button"
 							onClick={() =>
 								dispatch({
 									type: "SET_PROJECT_TYPE",
-									value: type.value as ProjectType,
+									value: value as ProjectType,
 								})
 							}
 							initial={{ opacity: 0, y: 12 }}
@@ -58,7 +63,7 @@ export default function StepProject() {
 									: "border-black/8 bg-white hover:border-black/15"
 							}`}
 						>
-							<span className="text-[1.25rem] mb-2">{type.icon}</span>
+							<span className="text-[1.25rem] mb-2">{icon}</span>
 							<span className="text-[0.9375rem] font-medium text-foreground">
 								{type.label}
 							</span>
@@ -85,8 +90,8 @@ export default function StepProject() {
 					htmlFor="quote-surface"
 					className="block text-[0.875rem] font-medium text-foreground mb-2"
 				>
-					Surface approximative{" "}
-					<span className="text-muted font-normal">(facultatif)</span>
+					{t("surfaceLabel")}{" "}
+					<span className="text-muted font-normal">{t("surfaceOptional")}</span>
 				</label>
 				<div className="relative">
 					<input
@@ -101,10 +106,10 @@ export default function StepProject() {
 							})
 						}
 						className="w-full px-4 py-3 pr-12 bg-white rounded-lg border border-black/10 text-[0.9375rem] text-foreground placeholder:text-muted/40 outline-none focus:border-foreground/30 transition-colors"
-						placeholder="120"
+						placeholder={t("surfacePlaceholder")}
 					/>
 					<span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted text-[0.875rem]">
-						m²
+						{t("surfaceUnit")}
 					</span>
 				</div>
 			</motion.div>
@@ -119,7 +124,7 @@ export default function StepProject() {
 					htmlFor="quote-location"
 					className="block text-[0.875rem] font-medium text-foreground mb-2"
 				>
-					Localisation du projet
+					{t("locationLabel")}
 				</label>
 				<motion.input
 					id="quote-location"
@@ -141,7 +146,7 @@ export default function StepProject() {
 							? "border-red-400 focus:border-red-400"
 							: "border-black/10 focus:border-foreground/30"
 					}`}
-					placeholder="Clermont-Ferrand, 63000"
+					placeholder={t("locationPlaceholder")}
 				/>
 				{errors.location && (
 					<p className="text-red-500 text-[0.8125rem] mt-1.5">

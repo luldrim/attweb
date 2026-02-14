@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import Container from "@/components/ui/Container";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {
+	const t = useTranslations("nav");
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const [isOverDark, setIsOverDark] = useState(false);
@@ -60,7 +62,7 @@ export default function Header() {
 						className={`p-2 transition-colors ${
 							isScrolled && !isOverDark ? "text-foreground" : "text-white"
 						}`}
-						aria-label="Ouvrir le menu"
+						aria-label={t("menuOpenLabel")}
 					>
 						<svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
 							<line x1="4" y1="9" x2="24" y2="9" />

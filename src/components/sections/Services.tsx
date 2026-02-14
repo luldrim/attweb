@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { SERVICES } from "@/lib/constants";
+import { useTranslations } from "next-intl";
+import { SERVICE_IMAGES } from "@/lib/constants";
 import ContactButton from "@/components/ui/ContactButton";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
@@ -20,6 +21,15 @@ function DotsDecor() {
 }
 
 export default function Services() {
+	const t = useTranslations("services");
+	const items = t.raw("items") as Array<{
+		number: string;
+		title: string;
+		subtitle: string;
+		stat: string;
+		statLabel: string;
+		description: string;
+	}>;
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
 
 	return (
@@ -36,10 +46,10 @@ export default function Services() {
 							transition={{ duration: 0.7, ease }}
 						>
 							<h2 className="text-[2.25rem] md:text-[3rem] lg:text-[3.5rem] font-light text-white leading-[1.1] tracking-tight">
-								Notre expertise
+								{t("heading")}
 							</h2>
 							<p className="text-[0.9375rem] text-white/50 leading-relaxed mt-4 max-w-[480px]">
-								Un savoir-faire complet en travaux tous corps d&apos;état — chaque prestation est pensée pour la qualité, la durabilité et le respect de vos attentes.
+								{t("subheading")}
 							</p>
 						</motion.div>
 						<motion.div
@@ -55,7 +65,7 @@ export default function Services() {
 
 					{/* Stacked service rows */}
 					<div className="flex flex-col">
-						{SERVICES.map((service, index) => {
+						{items.map((service, index) => {
 							const isOpen = openIndex === index;
 
 							return (
@@ -80,7 +90,7 @@ export default function Services() {
 										{/* Thumbnail — landscape */}
 										<div className="relative w-24 h-16 md:w-28 md:h-[4.5rem] rounded-lg overflow-hidden flex-shrink-0">
 											<Image
-												src={service.image}
+												src={SERVICE_IMAGES[index]}
 												alt={service.title}
 												fill
 												className="object-cover"
@@ -140,7 +150,7 @@ export default function Services() {
 											</p>
 											{/* CTA */}
 											<ContactButton variant="white" size="sm">
-												Demander un devis
+												{t("ctaButton")}
 											</ContactButton>
 										</div>
 									</motion.div>

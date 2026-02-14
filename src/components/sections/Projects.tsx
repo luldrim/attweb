@@ -5,17 +5,14 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { PROJECTS } from "@/lib/constants";
-
-const PARTNERS = [
-	"Réseau Pro BTP",
-	"Qualibat",
-	"Artisans de confiance",
-	"Maisons & Travaux",
-	"FFB Auvergne",
-];
+import { useTranslations } from "next-intl";
+import { PROJECT_IMAGES } from "@/lib/constants";
 
 export default function Projects() {
+	const t = useTranslations("projects");
+	const items = t.raw("items") as Array<{ title: string; date: string }>;
+	const partners = t.raw("partners") as string[];
+
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const carouselRef = useRef<HTMLDivElement>(null);
 	const [scrollRange, setScrollRange] = useState(0);
@@ -56,12 +53,12 @@ export default function Projects() {
 						<div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
 							<ScrollReveal>
 								<h2 className="text-[2.25rem] md:text-[3rem] lg:text-[3.5rem] font-light text-foreground leading-[1.1] tracking-tight">
-									Nos réalisations
+									{t("heading")}
 								</h2>
 							</ScrollReveal>
 							<ScrollReveal delay={0.15}>
 								<p className="text-[0.9375rem] text-foreground leading-relaxed lg:text-right lg:max-w-[340px] flex-shrink-0">
-									Chaque projet est le reflet de notre exigence — intentionnel, soigné et sur mesure.
+									{t("subheading")}
 								</p>
 							</ScrollReveal>
 						</div>
@@ -74,7 +71,7 @@ export default function Projects() {
 						<div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#f7f7f7] to-transparent z-10" />
 						<div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#f7f7f7] to-transparent z-10" />
 						<div className="flex items-center gap-12 py-3 animate-marquee">
-							{[...PARTNERS, ...PARTNERS].map((name, i) => (
+							{[...partners, ...partners].map((name, i) => (
 								<span
 									key={i}
 									className="text-[0.9375rem] font-semibold text-foreground/30 whitespace-nowrap flex-shrink-0"
@@ -92,7 +89,7 @@ export default function Projects() {
 					style={{ x }}
 					className="flex gap-3 pl-6 md:pl-8 lg:pl-[max(calc((100vw-1480px)/2+48px),48px)] pr-[30vw] will-change-transform"
 				>
-					{PROJECTS.map((project) => (
+					{items.map((project, i) => (
 						<div
 							key={project.title}
 							className="flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[55vw] bg-white rounded-xl overflow-hidden"
@@ -100,7 +97,7 @@ export default function Projects() {
 							{/* Image */}
 							<div className="relative aspect-[16/10] rounded-xl overflow-hidden m-2 md:m-2.5">
 								<Image
-									src={project.image}
+									src={PROJECT_IMAGES[i]}
 									alt={project.title}
 									fill
 									className="object-cover"

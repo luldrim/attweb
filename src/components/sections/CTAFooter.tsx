@@ -3,9 +3,9 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
 import ContactButton from "@/components/ui/ContactButton";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
-import { COMPANY, FOOTER_LEGAL } from "@/lib/constants";
 
 const CHAR_STAGGER = 0.02;
 const CHAR_DURATION = 0.35;
@@ -46,6 +46,11 @@ function BlurRevealInView({
 }
 
 export default function CTAFooter() {
+	const t = useTranslations("ctaFooter");
+	const tFooter = useTranslations("footer");
+	const tCompany = useTranslations("company");
+	const legalItems = tFooter.raw("legal") as Array<{ label: string; href: string }>;
+
 	return (
 		<footer id="contact" data-header-dark>
 			{/* CTA section with background image */}
@@ -63,13 +68,13 @@ export default function CTAFooter() {
 					<StaggerContainer stagger={0.15}>
 						<StaggerItem>
 							<span className="inline-block text-[0.75rem] uppercase font-semibold tracking-widest text-accent mb-3 md:mb-4">
-								Démarrons votre projet
+								{t("preheading")}
 							</span>
 						</StaggerItem>
 					</StaggerContainer>
 
 					<BlurRevealInView
-						text="Prêt à concrétiser vos idées ?"
+						text={t("heading")}
 						delay={0.2}
 						className="text-[2.25rem] md:text-[3rem] lg:text-[3.5rem] font-light text-white leading-[1.1] tracking-tight mb-3 md:mb-4 max-w-2xl [word-break:keep-all]"
 					/>
@@ -77,17 +82,16 @@ export default function CTAFooter() {
 					<StaggerContainer stagger={0.15} delay={0.6}>
 						<StaggerItem>
 							<p className="text-[0.9375rem] md:text-[1.0625rem] text-white/60 max-w-lg mb-7 md:mb-10 leading-relaxed">
-								Contactez-nous pour un devis gratuit et personnalisé. Notre équipe
-								vous accompagne à chaque étape.
+								{t("description")}
 							</p>
 						</StaggerItem>
 						<StaggerItem>
 							<div className="flex flex-col sm:flex-row gap-3 justify-center">
 								<ContactButton variant="white" size="lg">
-									Contactez-nous
+									{t("primaryButton")}
 								</ContactButton>
 								<ContactButton variant="glass" size="lg">
-									Demander un devis
+									{t("secondaryButton")}
 								</ContactButton>
 							</div>
 						</StaggerItem>
@@ -107,7 +111,7 @@ export default function CTAFooter() {
 									<span className="text-[1rem] md:text-[1.25rem] font-light text-white">Travaux</span>
 								</div>
 								<p className="text-[0.6875rem] md:text-[0.75rem] text-white/40 leading-relaxed">
-									{COMPANY.tagline}
+									{tCompany("tagline")}
 								</p>
 							</div>
 						</ScrollReveal>
@@ -116,28 +120,28 @@ export default function CTAFooter() {
 						<div className="md:contents">
 							<ScrollReveal delay={0.1} duration={0.6} distance={25}>
 								<div>
-									<h4 className="text-[0.75rem] md:text-[0.8125rem] font-semibold text-white mb-2 md:mb-3">Contact</h4>
+									<h4 className="text-[0.75rem] md:text-[0.8125rem] font-semibold text-white mb-2 md:mb-3">{tFooter("contactHeading")}</h4>
 									<ul className="space-y-1.5 text-[0.6875rem] md:text-[0.75rem] text-white/40">
 										<li>
-											<a href={COMPANY.phoneHref} className="hover:text-white/70 transition-colors">
-												{COMPANY.phone}
+											<a href={tCompany("phoneHref")} className="hover:text-white/70 transition-colors">
+												{tCompany("phone")}
 											</a>
 										</li>
 										<li>
-											<a href={`mailto:${COMPANY.email}`} className="hover:text-white/70 transition-colors">
-												{COMPANY.email}
+											<a href={`mailto:${tCompany("email")}`} className="hover:text-white/70 transition-colors">
+												{tCompany("email")}
 											</a>
 										</li>
-										<li className="hidden md:list-item">{COMPANY.address}</li>
+										<li className="hidden md:list-item">{tCompany("address")}</li>
 									</ul>
 								</div>
 							</ScrollReveal>
 
 							<ScrollReveal delay={0.2} duration={0.6} distance={25} className="hidden md:block">
 								<div>
-									<h4 className="text-[0.8125rem] font-semibold text-white mb-3">Informations</h4>
+									<h4 className="text-[0.8125rem] font-semibold text-white mb-3">{tFooter("legalHeading")}</h4>
 									<ul className="space-y-1.5">
-										{FOOTER_LEGAL.map((item) => (
+										{legalItems.map((item) => (
 											<li key={item.label}>
 												<a
 													href={item.href}
@@ -156,15 +160,18 @@ export default function CTAFooter() {
 					{/* Copyright + legal links */}
 					<ScrollReveal duration={0.5} distance={15} viewportMargin="-20px">
 						<div className="py-4 border-t border-white/10 flex justify-between items-center text-[0.65rem] md:text-[0.7rem] text-white/25">
-							<span className="hidden md:inline">© {new Date().getFullYear()} {COMPANY.name}. Tous droits réservés.</span>
+							<span className="hidden md:inline">&copy; {new Date().getFullYear()} {tCompany("name")}. {tFooter("copyright")}</span>
 							<div className="flex gap-4">
-								{FOOTER_LEGAL.map((item) => (
+								{legalItems.map((item) => (
 									<a key={item.label} href={item.href} className="md:hidden whitespace-nowrap hover:text-white/50 transition-colors">
 										{item.label}
 									</a>
 								))}
-								<a href="#" className="hover:text-white/50 transition-colors hidden md:inline">Mentions légales</a>
-								<a href="#" className="hover:text-white/50 transition-colors hidden md:inline">Confidentialité</a>
+								{legalItems.map((item) => (
+									<a key={`desktop-${item.label}`} href={item.href} className="hover:text-white/50 transition-colors hidden md:inline">
+										{item.label}
+									</a>
+								))}
 							</div>
 						</div>
 					</ScrollReveal>

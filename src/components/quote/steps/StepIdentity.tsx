@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useQuote } from "../quote-context";
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -65,6 +66,7 @@ function Field({
 }
 
 export default function StepIdentity() {
+	const t = useTranslations("quote.identity");
 	const { state, dispatch } = useQuote();
 	const { clientType } = state.data;
 	const isPro = clientType === "professionnel";
@@ -77,10 +79,10 @@ export default function StepIdentity() {
 				transition={{ duration: 0.3, delay: 0.05, ease }}
 			>
 				<h2 className="text-[1.75rem] md:text-[2rem] font-light text-foreground leading-tight tracking-tight">
-					Qui êtes-vous ?
+					{t("heading")}
 				</h2>
 				<p className="text-muted text-[0.9375rem] mt-1">
-					Commençons par faire connaissance.
+					{t("subheading")}
 				</p>
 			</motion.div>
 
@@ -100,7 +102,7 @@ export default function StepIdentity() {
 							clientType === type ? "text-foreground" : "text-muted"
 						}`}
 					>
-						{type === "particulier" ? "Particulier" : "Professionnel"}
+						{t(`clientTypes.${type}`)}
 						{clientType === type && (
 							<motion.div
 								layoutId="clientType"
@@ -123,10 +125,10 @@ export default function StepIdentity() {
 						className="overflow-hidden"
 					>
 						<Field
-							label="Nom de l'entreprise"
+							label={t("companyLabel")}
 							id="quote-company"
 							field="companyName"
-							placeholder="Ma Société SARL"
+							placeholder={t("companyPlaceholder")}
 							index={0}
 						/>
 					</motion.div>
@@ -135,35 +137,35 @@ export default function StepIdentity() {
 
 			<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 				<Field
-					label="Prénom"
+					label={t("firstNameLabel")}
 					id="quote-firstName"
 					field="firstName"
-					placeholder="Jean"
+					placeholder={t("firstNamePlaceholder")}
 					index={1}
 				/>
 				<Field
-					label="Nom"
+					label={t("lastNameLabel")}
 					id="quote-lastName"
 					field="lastName"
-					placeholder="Dupont"
+					placeholder={t("lastNamePlaceholder")}
 					index={2}
 				/>
 			</div>
 
 			<Field
-				label="Téléphone"
+				label={t("phoneLabel")}
 				id="quote-phone"
 				field="phone"
 				type="tel"
-				placeholder="06 00 00 00 00"
+				placeholder={t("phonePlaceholder")}
 				index={3}
 			/>
 			<Field
-				label="Email"
+				label={t("emailLabel")}
 				id="quote-email"
 				field="email"
 				type="email"
-				placeholder="jean@exemple.fr"
+				placeholder={t("emailPlaceholder")}
 				index={4}
 			/>
 
@@ -206,14 +208,13 @@ export default function StepIdentity() {
 						</span>
 					</span>
 					<span className="text-[0.8125rem] text-muted leading-snug">
-						J&apos;accepte que mes données soient traitées dans le cadre de ma
-						demande de devis conformément à la{" "}
+						{t("rgpdText")}{" "}
 						<a
 							href="#"
 							className="text-foreground underline underline-offset-2 decoration-1 hover:text-foreground/70 transition-colors"
 							onClick={(e) => e.stopPropagation()}
 						>
-							politique de confidentialité
+							{t("rgpdLink")}
 						</a>
 						.
 					</span>

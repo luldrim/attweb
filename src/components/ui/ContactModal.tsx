@@ -3,7 +3,7 @@
 import { useState, useEffect, type FormEvent } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { COMPANY } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 
 export function openContactModal() {
 	window.dispatchEvent(new Event("open-contact"));
@@ -12,6 +12,8 @@ export function openContactModal() {
 const ease = [0.32, 0.72, 0, 1] as const;
 
 export default function ContactModal() {
+	const t = useTranslations("contactModal");
+	const tCompany = useTranslations("company");
 	const [isOpen, setIsOpen] = useState(false);
 	const [sent, setSent] = useState(false);
 
@@ -76,7 +78,7 @@ export default function ContactModal() {
 							transition={{ duration: 0.3, delay: 0.25, ease }}
 							onClick={handleClose}
 							className="absolute top-5 right-5 z-10 p-1.5 text-foreground hover:text-muted transition-colors cursor-pointer"
-							aria-label="Fermer"
+							aria-label={t("closeLabel")}
 						>
 							<svg width="24" height="24" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
 								<line x1="6" y1="6" x2="22" y2="22" />
@@ -92,7 +94,7 @@ export default function ContactModal() {
 								transition={{ duration: 0.6, delay: 0.1, ease }}
 								className="text-[2rem] md:text-[2.75rem] lg:text-[3.25rem] font-light text-foreground leading-[1.05] tracking-tight"
 							>
-								Contactez-nous
+								{t("heading")}
 							</motion.h2>
 							<motion.p
 								initial={{ opacity: 0, y: 15 }}
@@ -100,7 +102,7 @@ export default function ContactModal() {
 								transition={{ duration: 0.5, delay: 0.18, ease }}
 								className="text-[0.9375rem] text-muted mt-3 max-w-[360px]"
 							>
-								Parlons de votre projet — nous sommes disponibles pour vous accompagner.
+								{t("subheading")}
 							</motion.p>
 
 							{/* Image — between title and infos on desktop */}
@@ -128,34 +130,34 @@ export default function ContactModal() {
 							>
 								<div>
 									<h5 className="text-[0.8125rem] font-semibold text-foreground mb-0.5">
-										Appelez-nous
+										{t("callLabel")}
 									</h5>
-									<a href={COMPANY.phoneHref} className="text-[0.8125rem] text-muted hover:text-foreground transition-colors">
-										{COMPANY.phone}
+									<a href={tCompany("phoneHref")} className="text-[0.8125rem] text-muted hover:text-foreground transition-colors">
+										{tCompany("phone")}
 									</a>
 								</div>
 								<div>
 									<h5 className="text-[0.8125rem] font-semibold text-foreground mb-0.5">
-										Email
+										{t("emailLabel")}
 									</h5>
-									<a href={`mailto:${COMPANY.email}`} className="text-[0.8125rem] text-muted hover:text-foreground transition-colors underline underline-offset-2 decoration-1">
-										{COMPANY.email}
+									<a href={`mailto:${tCompany("email")}`} className="text-[0.8125rem] text-muted hover:text-foreground transition-colors underline underline-offset-2 decoration-1">
+										{tCompany("email")}
 									</a>
 								</div>
 								<div>
 									<h5 className="text-[0.8125rem] font-semibold text-foreground mb-0.5">
-										Adresse
+										{t("addressLabel")}
 									</h5>
 									<p className="text-[0.8125rem] text-muted leading-relaxed">
-										{COMPANY.address}
+										{tCompany("address")}
 									</p>
 								</div>
 								<div>
 									<h5 className="text-[0.8125rem] font-semibold text-foreground mb-0.5">
-										Zone
+										{t("zoneLabel")}
 									</h5>
 									<p className="text-[0.8125rem] text-muted">
-										{COMPANY.region}
+										{tCompany("region")}
 									</p>
 								</div>
 							</motion.div>
@@ -176,10 +178,10 @@ export default function ContactModal() {
 										</svg>
 									</div>
 									<h4 className="text-[1.25rem] font-semibold text-foreground mb-2">
-										Message envoyé
+										{t("form.successHeading")}
 									</h4>
 									<p className="text-[0.9375rem] text-muted">
-										Nous reviendrons vers vous sous 24h.
+										{t("form.successMessage")}
 									</p>
 								</motion.div>
 							) : (
@@ -192,7 +194,7 @@ export default function ContactModal() {
 								>
 									<div>
 										<label htmlFor="contact-name" className="block text-[0.875rem] font-medium text-foreground mb-2">
-											Nom complet
+											{t("form.nameLabel")}
 										</label>
 										<input
 											id="contact-name"
@@ -200,12 +202,12 @@ export default function ContactModal() {
 											type="text"
 											required
 											className="w-full px-4 py-3 bg-white rounded-lg border border-black/10 text-[0.9375rem] text-foreground placeholder:text-muted/40 outline-none focus:border-foreground/30 transition-colors"
-											placeholder="Jean Dupont"
+											placeholder={t("form.namePlaceholder")}
 										/>
 									</div>
 									<div>
 										<label htmlFor="contact-email" className="block text-[0.875rem] font-medium text-foreground mb-2">
-											Email
+											{t("form.emailLabel")}
 										</label>
 										<input
 											id="contact-email"
@@ -213,24 +215,24 @@ export default function ContactModal() {
 											type="email"
 											required
 											className="w-full px-4 py-3 bg-white rounded-lg border border-black/10 text-[0.9375rem] text-foreground placeholder:text-muted/40 outline-none focus:border-foreground/30 transition-colors"
-											placeholder="jean@exemple.fr"
+											placeholder={t("form.emailPlaceholder")}
 										/>
 									</div>
 									<div>
 										<label htmlFor="contact-phone" className="block text-[0.875rem] font-medium text-foreground mb-2">
-											Téléphone
+											{t("form.phoneLabel")}
 										</label>
 										<input
 											id="contact-phone"
 											name="phone"
 											type="tel"
 											className="w-full px-4 py-3 bg-white rounded-lg border border-black/10 text-[0.9375rem] text-foreground placeholder:text-muted/40 outline-none focus:border-foreground/30 transition-colors"
-											placeholder="06 00 00 00 00"
+											placeholder={t("form.phonePlaceholder")}
 										/>
 									</div>
 									<div className="flex-1 flex flex-col">
 										<label htmlFor="contact-message" className="block text-[0.875rem] font-medium text-foreground mb-2">
-											Message
+											{t("form.messageLabel")}
 										</label>
 										<textarea
 											id="contact-message"
@@ -238,7 +240,7 @@ export default function ContactModal() {
 											rows={4}
 											required
 											className="w-full flex-1 min-h-[120px] px-4 py-3 bg-white rounded-lg border border-black/10 text-[0.9375rem] text-foreground placeholder:text-muted/40 outline-none focus:border-foreground/30 transition-colors resize-none"
-											placeholder="Décrivez votre projet..."
+											placeholder={t("form.messagePlaceholder")}
 										/>
 									</div>
 									<button
@@ -247,10 +249,10 @@ export default function ContactModal() {
 									>
 										<span className="relative block overflow-hidden">
 											<span className="block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
-												Envoyer
+												{t("form.submitButton")}
 											</span>
 											<span className="absolute top-full left-0 block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full" aria-hidden="true">
-												Envoyer
+												{t("form.submitButton")}
 											</span>
 										</span>
 									</button>

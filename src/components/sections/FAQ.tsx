@@ -3,9 +3,9 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Container from "@/components/ui/Container";
 import ContactButton from "@/components/ui/ContactButton";
-import { FAQ_ITEMS } from "@/lib/constants";
 
 function AccordionItem({
 	question,
@@ -74,6 +74,8 @@ function AccordionItem({
 }
 
 export default function FAQ() {
+	const t = useTranslations("faq");
+	const items = t.raw("items") as Array<{ question: string; answer: string }>;
 	const [openIndex, setOpenIndex] = useState<number | null>(0);
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
@@ -91,10 +93,10 @@ export default function FAQ() {
 				>
 					<div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-12 md:mb-14">
 						<h2 className="text-[2.25rem] md:text-[3rem] lg:text-[3.5rem] font-light text-foreground leading-[1.1] tracking-tight">
-							Des réponses claires
+							{t("heading")}
 						</h2>
 						<p className="text-[0.9375rem] text-foreground/70 leading-relaxed md:text-right max-w-[380px]">
-							Nous avons répondu aux questions les plus fréquentes pour vous aider à avancer sereinement.
+							{t("subheading")}
 						</p>
 					</div>
 				</div>
@@ -103,7 +105,7 @@ export default function FAQ() {
 				<div ref={sectionRef} className="grid grid-cols-1 lg:grid-cols-2 gap-3">
 					{/* Accordion */}
 					<div className="flex flex-col gap-3">
-						{FAQ_ITEMS.map((item, i) => (
+						{items.map((item, i) => (
 							<AccordionItem
 								key={i}
 								question={item.question}
@@ -136,10 +138,10 @@ export default function FAQ() {
 							{/* Blurred glass overlay */}
 							<div className="absolute inset-x-4 bottom-4 rounded-xl bg-black/40 backdrop-blur-xl p-5 md:p-6">
 								<h5 className="text-white text-[1.125rem] font-medium mb-3">
-									Encore une question ?
+									{t("imageCtaHeading")}
 								</h5>
 								<ContactButton variant="white" size="sm">
-									Contactez-nous
+									{t("imageCtaButton")}
 								</ContactButton>
 							</div>
 						</div>

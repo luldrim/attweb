@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { NAV_LINKS, COMPANY } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const ease = [0.32, 0.72, 0, 1] as const;
@@ -13,6 +13,10 @@ type MobileMenuProps = {
 };
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+	const t = useTranslations("nav");
+	const tCompany = useTranslations("company");
+	const links = t.raw("links") as Array<{ label: string; href: string }>;
+
 	return (
 		<AnimatePresence>
 			{isOpen && (
@@ -65,10 +69,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 									</svg>
 								</div>
 								<p className="text-[1.25rem] md:text-[1.375rem] text-white font-light leading-snug">
-									Des réalisations durables, un design intemporel
+									{t("menuImageCaption")}
 								</p>
 								<span className="inline-block mt-3 px-4 py-1.5 bg-white/15 backdrop-blur-sm rounded-full text-[0.8125rem] text-white">
-									Inspirant
+									{t("menuImageBadge")}
 								</span>
 							</motion.div>
 						</motion.div>
@@ -90,7 +94,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 								<button
 									onClick={onClose}
 									className="p-1 text-foreground hover:text-muted transition-colors"
-									aria-label="Fermer le menu"
+									aria-label={t("menuCloseLabel")}
 								>
 									<motion.svg
 										initial={{ rotate: -90, opacity: 0 }}
@@ -114,17 +118,17 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 									transition={{ duration: 0.6, delay: 0.2, ease }}
 									className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground tracking-tight leading-none mb-6"
 								>
-									CONTACTEZ-NOUS
+									{t("menuHeading")}
 								</motion.h2>
 								<motion.a
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0 }}
 									transition={{ duration: 0.5, delay: 0.3, ease }}
-									href={`mailto:${COMPANY.email}`}
+									href={`mailto:${tCompany("email")}`}
 									className="inline-block text-[1.0625rem] md:text-[1.125rem] text-foreground underline underline-offset-4 decoration-1 hover:text-muted transition-colors"
 								>
-									{COMPANY.email}
+									{tCompany("email")}
 								</motion.a>
 
 								{/* Navigation */}
@@ -135,10 +139,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 										transition={{ duration: 0.4, delay: 0.35, ease }}
 										className="text-[0.9375rem] font-semibold text-foreground mb-4"
 									>
-										Navigation :
+										{t("menuNavLabel")}
 									</motion.p>
 									<div className="flex flex-wrap gap-x-8 gap-y-3">
-										{NAV_LINKS.map((link, i) =>
+										{links.map((link, i) =>
 											link.href === "#contact" ? (
 												<motion.div
 													key={link.href}
@@ -182,7 +186,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 								className="pt-8 mt-auto"
 							>
 								<p className="text-[0.8125rem] text-muted">
-									© {new Date().getFullYear()} {COMPANY.name}. Tous droits réservés
+									&copy; {new Date().getFullYear()} {tCompany("name")}. Tous droits réservés
 								</p>
 							</motion.div>
 						</div>

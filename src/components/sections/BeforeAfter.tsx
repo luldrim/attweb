@@ -7,9 +7,12 @@ import {
 	useScroll,
 	useTransform,
 } from "framer-motion";
+import { useTranslations } from "next-intl";
 import ContactButton from "@/components/ui/ContactButton";
 
 export default function BeforeAfter() {
+	const t = useTranslations("beforeAfter");
+	const expert = t.raw("expert") as { name: string; role: string; tagline: string; ctaButton: string };
 	const [expertOpen, setExpertOpen] = useState(false);
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
@@ -80,13 +83,13 @@ export default function BeforeAfter() {
 						{/* Text */}
 						<div className="max-w-lg">
 							<span className="inline-block text-accent text-[0.75rem] uppercase tracking-widest font-semibold mb-2">
-								Rénovation complète
+								{t("label")}
 							</span>
 							<h2 className="text-white text-[1.75rem] md:text-[2.25rem] lg:text-[2.75rem] font-light leading-[1.1] tracking-tight">
-								Transformation cuisine — Clermont&#8209;Ferrand
+								{t("heading")}
 							</h2>
 							<p className="text-white/60 text-[0.9375rem] leading-relaxed mt-3 max-w-md">
-								D&apos;une cuisine vétuste à un espace moderne et fonctionnel, en seulement 6 semaines.
+								{t("description")}
 							</p>
 						</div>
 
@@ -118,7 +121,7 @@ export default function BeforeAfter() {
 									>
 										<Image
 											src="https://framerusercontent.com/images/ZokFTvIUZIDAmlsADCohr7aSmA.jpeg"
-											alt="Thomas Durand"
+											alt={expert.name}
 											width={48}
 											height={48}
 											className="object-cover w-full h-full"
@@ -133,7 +136,7 @@ export default function BeforeAfter() {
 												fontWeight: expertOpen ? 600 : 500,
 											}}
 										>
-											Thomas Durand
+											{expert.name}
 										</div>
 										<div
 											className="leading-tight transition-colors duration-300"
@@ -142,7 +145,7 @@ export default function BeforeAfter() {
 												fontSize: expertOpen ? "0.75rem" : "0.6875rem",
 											}}
 										>
-											Chef de projet
+											{expert.role}
 										</div>
 									</div>
 								</div>
@@ -157,10 +160,10 @@ export default function BeforeAfter() {
 								>
 									<div className="border-t border-black/8 px-4 py-2.5 flex items-center justify-between gap-3">
 										<p className="text-muted text-[0.75rem] leading-snug">
-											Suivi qualité &amp; délais
+											{expert.tagline}
 										</p>
 										<ContactButton variant="secondary" className="px-4 py-1.5 text-[0.75rem] whitespace-nowrap shrink-0">
-											Contactez-moi
+											{expert.ctaButton}
 										</ContactButton>
 									</div>
 								</div>
@@ -178,7 +181,7 @@ export default function BeforeAfter() {
 					}}
 				>
 					<div className="absolute top-24 right-5 md:top-28 md:right-8 bg-black/40 backdrop-blur-md text-white text-[0.8125rem] font-medium px-4 py-1.5 rounded-full">
-						Avant
+						{t("beforeLabel")}
 					</div>
 				</motion.div>
 
@@ -191,7 +194,7 @@ export default function BeforeAfter() {
 					}}
 				>
 					<div className="absolute top-24 left-5 md:top-28 md:left-8 bg-white/90 backdrop-blur-md text-foreground text-[0.8125rem] font-medium px-4 py-1.5 rounded-full">
-						Après
+						{t("afterLabel")}
 					</div>
 				</motion.div>
 			  </div>

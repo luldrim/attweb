@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
@@ -47,6 +48,7 @@ function BlurReveal({
 }
 
 export default function Hero() {
+	const t = useTranslations("hero");
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
 		target: sectionRef,
@@ -56,9 +58,10 @@ export default function Hero() {
 	const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 	const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
-	const labelText = "#1 Maître d'œuvre en Auvergne-Rhône-Alpes";
-	const line1 = "Construisons votre";
-	const line2 = "projet de vie";
+	const labelText = t("label");
+	const headline = t.raw("headline") as string[];
+	const line1 = headline[0];
+	const line2 = headline[1];
 
 	const labelDelay = 0.3;
 	const line1Delay = labelDelay + labelText.length * CHAR_STAGGER + 0.1;
@@ -121,10 +124,10 @@ export default function Hero() {
 						>
 							<span className="relative block overflow-hidden">
 								<span className="block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
-									Demander un devis
+									{t("ctaButton")}
 								</span>
 								<span className="absolute top-full left-0 block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full" aria-hidden="true">
-									Demander un devis
+									{t("ctaButton")}
 								</span>
 							</span>
 						</Link>
@@ -147,7 +150,7 @@ export default function Hero() {
 							].map((src, i) => (
 								<div
 									key={i}
-									className={`w-10 h-10 md:w-13 md:h-13 rounded-full border-2 border-white overflow-hidden transition-[margin] duration-300 ease-out ${i > 0 ? "-ml-[18px] md:-ml-[22px] group-hover/badges:md:-ml-1.5" : ""}`}
+									className={`w-10 h-10 md:w-10 md:h-10 lg:w-13 lg:h-13 rounded-full border-2 border-white overflow-hidden transition-[margin] duration-300 ease-out ${i > 0 ? "-ml-[18px] md:-ml-[18px] lg:-ml-[22px] group-hover/badges:md:-ml-1.5" : ""}`}
 								>
 									<Image
 										src={src}
@@ -159,10 +162,10 @@ export default function Hero() {
 								</div>
 							))}
 						</div>
-						<span className="text-[0.8125rem] md:text-[1.0625rem] text-white leading-snug">
-							Plus de 15 000 m²
+						<span className="text-[0.8125rem] md:text-[0.8125rem] lg:text-[1.0625rem] text-white leading-snug">
+							{t("statsLabel")}
 							<br />
-							de travaux finis
+							{t("statsSubLabel")}
 						</span>
 					</motion.div>
 				</Container>

@@ -200,3 +200,60 @@ export const FOOTER_LEGAL = [
 	{ label: "Mentions légales", href: "#" },
 	{ label: "Politique de confidentialité", href: "#" },
 ] as const;
+
+export const QUOTE_STEPS = [
+	{ title: "Qui êtes-vous ?", subtitle: "Vos coordonnées" },
+	{ title: "Votre projet", subtitle: "Type et localisation" },
+	{ title: "Détails", subtitle: "Description et fichiers" },
+] as const;
+
+export const QUOTE_PROJECT_TYPES = [
+	{
+		value: "renovation" as const,
+		label: "Rénovation",
+		icon: "🔨",
+		description: "Moderniser un espace existant",
+	},
+	{
+		value: "construction" as const,
+		label: "Construction neuve",
+		icon: "🏗️",
+		description: "Bâtir un nouveau projet",
+	},
+	{
+		value: "amenagement" as const,
+		label: "Aménagement intérieur",
+		icon: "🏠",
+		description: "Optimiser vos espaces",
+	},
+	{
+		value: "extension" as const,
+		label: "Extension / Surélévation",
+		icon: "📐",
+		description: "Agrandir votre bien",
+	},
+] as const;
+
+export const QUOTE_CAROUSEL_SLIDES = [
+	{
+		image: PROJECTS[0].image,
+		title: PROJECTS[0].title,
+		quote: TESTIMONIALS[0].quote,
+		author: TESTIMONIALS[0].name,
+		role: TESTIMONIALS[0].role,
+	},
+	{
+		image: PROJECTS[1].image,
+		title: PROJECTS[1].title,
+		quote: TESTIMONIALS[1].quote,
+		author: TESTIMONIALS[1].name,
+		role: TESTIMONIALS[1].role,
+	},
+	{
+		image: PROJECTS[2].image,
+		title: PROJECTS[2].title,
+		quote: TESTIMONIALS[2].quote,
+		author: TESTIMONIALS[2].name,
+		role: TESTIMONIALS[2].role,
+	},
+] as const;

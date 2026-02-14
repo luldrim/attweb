@@ -1,7 +1,4 @@
-"use client";
-
 import Button from "./Button";
-import { openContactModal } from "./ContactModal";
 
 type ContactButtonProps = {
 	variant?: "primary" | "secondary" | "white" | "glass" | "outline";
@@ -17,7 +14,7 @@ export default function ContactButton({
 	children,
 }: ContactButtonProps) {
 	return (
-		<Button variant={variant} size={size} className={className} onClick={openContactModal}>
+		<Button variant={variant} size={size} className={className} href="/request-quote">
 			{children}
 		</Button>
 	);

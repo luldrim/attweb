@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS, COMPANY } from "@/lib/constants";
-import { openContactModal } from "@/components/ui/ContactModal";
+import Link from "next/link";
 
 const ease = [0.32, 0.72, 0, 1] as const;
 
@@ -138,28 +138,38 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 										Navigation :
 									</motion.p>
 									<div className="flex flex-wrap gap-x-8 gap-y-3">
-										{NAV_LINKS.map((link, i) => (
-											<motion.a
-												key={link.href}
-												initial={{ opacity: 0, y: 15 }}
-												animate={{ opacity: 1, y: 0 }}
-												exit={{ opacity: 0 }}
-												transition={{ duration: 0.4, delay: 0.35 + i * 0.05, ease }}
-												href={link.href}
-												onClick={(e) => {
-													if (link.href === "#contact") {
-														e.preventDefault();
-														onClose();
-														setTimeout(openContactModal, 400);
-													} else {
-														onClose();
-													}
-												}}
-												className="text-[0.9375rem] text-foreground hover:text-muted transition-colors cursor-pointer"
-											>
-												{link.label}
-											</motion.a>
-										))}
+										{NAV_LINKS.map((link, i) =>
+											link.href === "#contact" ? (
+												<motion.div
+													key={link.href}
+													initial={{ opacity: 0, y: 15 }}
+													animate={{ opacity: 1, y: 0 }}
+													exit={{ opacity: 0 }}
+													transition={{ duration: 0.4, delay: 0.35 + i * 0.05, ease }}
+												>
+													<Link
+														href="/request-quote"
+														onClick={onClose}
+														className="text-[0.9375rem] text-foreground hover:text-muted transition-colors cursor-pointer"
+													>
+														{link.label}
+													</Link>
+												</motion.div>
+											) : (
+												<motion.a
+													key={link.href}
+													initial={{ opacity: 0, y: 15 }}
+													animate={{ opacity: 1, y: 0 }}
+													exit={{ opacity: 0 }}
+													transition={{ duration: 0.4, delay: 0.35 + i * 0.05, ease }}
+													href={link.href}
+													onClick={onClose}
+													className="text-[0.9375rem] text-foreground hover:text-muted transition-colors cursor-pointer"
+												>
+													{link.label}
+												</motion.a>
+											)
+										)}
 									</div>
 								</div>
 							</div>

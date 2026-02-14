@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -23,7 +24,20 @@ export default function RootLayout({
 			<head>
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
 			</head>
-			<body className={`${geistSans.variable} antialiased`}>{children}</body>
+			<body className={`${geistSans.variable} antialiased`}>
+				{children}
+				<Toaster
+					position="top-center"
+					toastOptions={{
+						style: {
+							fontFamily: "var(--font-geist-sans), system-ui, sans-serif",
+						},
+						classNames: {
+							warning: "[&_[data-icon]]:!text-red-500",
+						},
+					}}
+				/>
+			</body>
 		</html>
 	);
 }

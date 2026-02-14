@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { openContactModal } from "@/components/ui/ContactModal";
+import Link from "next/link";
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
@@ -66,12 +66,12 @@ export default function Hero() {
 	const buttonDelay = line2Delay + line2.length * CHAR_STAGGER + 0.15;
 
 	return (
-		<section id="accueil" ref={sectionRef} className="p-2.5 md:p-3 h-screen min-h-[600px]">
+		<section id="accueil" ref={sectionRef} className="bg-white p-2.5 md:p-3 h-screen min-h-[600px]">
 			<motion.div
 				initial={{ scale: 1.05, opacity: 0 }}
 				animate={{ scale: 1, opacity: 1 }}
 				transition={{ duration: 1.2, ease }}
-				className="relative w-full h-full rounded-[20px] md:rounded-[24px] overflow-hidden"
+				className="relative w-full h-full rounded-[20px] md:rounded-[24px] overflow-hidden bg-black"
 			>
 				{/* Background image — parallax */}
 				<motion.div
@@ -106,7 +106,7 @@ export default function Hero() {
 					</div>
 
 					{/* CTA button */}
-					<motion.button
+					<motion.div
 						initial={{ opacity: 0, y: 15 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{
@@ -114,18 +114,21 @@ export default function Hero() {
 							delay: buttonDelay,
 							ease,
 						}}
-						onClick={openContactModal}
-						className="group mt-8 md:mt-10 inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-full text-[0.9375rem] font-medium overflow-hidden hover:bg-white/90 transition-colors duration-200 cursor-pointer"
 					>
-						<span className="relative block overflow-hidden">
-							<span className="block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
-								Demander un devis
+						<Link
+							href="/request-quote"
+							className="group mt-8 md:mt-10 inline-flex items-center justify-center px-8 py-3.5 bg-white text-foreground rounded-full text-[0.9375rem] font-medium overflow-hidden hover:bg-white/90 transition-colors duration-200"
+						>
+							<span className="relative block overflow-hidden">
+								<span className="block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
+									Demander un devis
+								</span>
+								<span className="absolute top-full left-0 block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full" aria-hidden="true">
+									Demander un devis
+								</span>
 							</span>
-							<span className="absolute top-full left-0 block transition-transform duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full" aria-hidden="true">
-								Demander un devis
-							</span>
-						</span>
-					</motion.button>
+						</Link>
+					</motion.div>
 				</Container>
 
 				{/* Bottom bar */}

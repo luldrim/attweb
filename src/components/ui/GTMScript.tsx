@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { type ConsentState, getStoredConsent } from "@/lib/consent";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
@@ -73,12 +73,10 @@ function injectGTM(id: string): void {
 }
 
 export default function GTMScript() {
-	const injected = useRef(false);
-
 	useEffect(() => {
 		if (!GTM_ID) return;
 
-		// Set consent defaults
+		// 1. Set consent defaults (denied until user chooses)
 		const stored = getStoredConsent();
 		const defaultState: ConsentState = stored ?? {
 			necessary: true,
@@ -87,22 +85,14 @@ export default function GTMScript() {
 		};
 		gtagConsent("default", defaultState);
 
-		// If user previously consented to analytics, inject GTM
-		if (stored?.analytics && !injected.current) {
-			injected.current = true;
-			injectGTM(GTM_ID);
-		}
+		// 2. Always inject GTM — Consent Mode v2 controls what tags fire
+		injectGTM(GTM_ID);
 
-		// Listen for consent updates
+		// 3. Listen for consent updates
 		function onConsentUpdate(e: Event) {
 			const consent = (e as CustomEvent<ConsentState>).detail;
 			gtagConsent("update", consent);
 			pushConsent("update", consent);
-
-			if (consent.analytics && !injected.current) {
-				injected.current = true;
-				injectGTM(GTM_ID!);
-			}
 
 			// If analytics revoked, clean up GA cookies
 			if (!consent.analytics) {

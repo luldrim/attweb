@@ -82,7 +82,7 @@ export default function Hero() {
 					className="absolute inset-0 will-change-transform"
 				>
 					<Image
-						src="https://framerusercontent.com/images/DFpdCiQV48a6W3GFDaN4xOTZp0.jpeg"
+						src="/images/hero.jpg"
 						alt="Projet architectural"
 						fill
 						priority
@@ -91,7 +91,7 @@ export default function Hero() {
 					/>
 				</motion.div>
 
-				<div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
+				<div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/65" />
 
 				{/* Content */}
 				<Container className="relative z-10 h-full flex flex-col items-center justify-center text-center">

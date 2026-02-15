@@ -23,21 +23,15 @@ Marketing website for **Atout Travaux**, a construction/renovation company in Au
 | `npm run dev` | Start dev server (Turbopack) |
 | `npm run build` | Production build |
 | `npx eslint src/` | Lint (`next lint` was removed in Next.js 16) |
-| `npm run deploy` | Build + deploy to Cloudflare Worker |
+| `npm run deploy` | Do not use Build + deploy to Cloudflare Worker |
 
 ## Deployment
 
 This project deploys as a **Cloudflare Worker**. The config is in `wrangler.jsonc`.
 
-```bash
-# Full deploy (build + deploy):
-npm run deploy
+**NEVER use `wrangler pages deploy` or `npm run deploy`**. This is a Worker, not a Pages project. Using the wrong command will create a separate Pages project instead of updating the Worker.
 
-# Or manually:
-npx opennextjs-cloudflare build && npx wrangler deploy
-```
-
-**NEVER use `wrangler pages deploy`**. This is a Worker, not a Pages project. Using the wrong command will create a separate Pages project instead of updating the Worker.
+**Project is auto deployed via cloudflare when pushed on main**
 
 ## Project Structure
 
@@ -176,74 +170,3 @@ const tServices = useTranslations("services");
 ### Design system
 
 See [`docs/design-guidelines.md`](docs/design-guidelines.md) for the full design system: colors, typography, spacing, animations, button variants, card styles, image overlays, form styles, and all easing curves.
-
-Quick reference: Background `#f7f7f7`, accent gold `#c8a55a`, cards `bg-white rounded-2xl`, breakpoints sm=640/md=810/lg=1200/xl=1480.
-
-### Technical config in `constants.ts`
-
-Images, hrefs, and icons live in `src/lib/constants.ts`, indexed to match arrays in `messages/fr.json`:
-
-```tsx
-import { SERVICE_IMAGES } from "@/lib/constants";
-
-const items = t.raw("items") as Array<{ title: string }>;
-// SERVICE_IMAGES[0] corresponds to items[0], etc.
-```
-
-### Contact modal
-
-```tsx
-import ContactButton from "@/components/ui/ContactButton";
-
-// In server components:
-<ContactButton variant="primary">Contact</ContactButton>
-
-// In client components (direct):
-import { openContactModal } from "@/components/ui/ContactModal";
-openContactModal();
-```
-
-### Scroll animations
-
-```tsx
-import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
-
-<ScrollReveal>
-  <h2>Fades in on scroll</h2>
-</ScrollReveal>
-
-<StaggerContainer stagger={0.08}>
-  <StaggerItem>Item 1</StaggerItem>
-  <StaggerItem>Item 2</StaggerItem>
-</StaggerContainer>
-```
-
----
-
-## Tailwind CSS v4
-
-Config is **inline in `src/app/globals.css`** using `@theme inline`. There is no `tailwind.config.ts`.
-
-To add custom colors, breakpoints, or tokens, edit `globals.css`:
-
-```css
-@theme inline {
-  --color-accent: #c8a55a;
-  --breakpoint-md: 810px;
-  /* etc. */
-}
-```
-
----
-
-## Gotchas
-
-- **Turbopack cache**: If you get a panic after deleting/moving files, run `rm -rf .next` and restart dev
-- **`next lint` removed**: Use `npx eslint src/` instead
-- **Framer Motion `useTransform`**: Array ranges are unreliable for opacity — use function callbacks
-- **`motion.create()` in render**: Causes unmount/remount loops — define outside render
-- **`layout` animation + borderRadius**: Causes oval distortion — use CSS transitions instead
-- **Lenis smooth scroll**: Remove `scroll-behavior: smooth` from CSS when using Lenis
-- **iOS Safari**: Avoid `position: fixed/sticky` on dark elements (status bar tinting)
-- **Tailwind `space-x`**: Doesn't animate on hover — use `margin-left` with `transition-[margin]`
-- **`position: relative`**: Paints above non-positioned siblings — use `isolation: isolate` for sticky sections

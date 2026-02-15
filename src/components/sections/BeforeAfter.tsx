@@ -102,7 +102,7 @@ export default function BeforeAfter() {
 							<div
 								className="overflow-hidden transition-all duration-300 ease-out"
 								style={{
-									width: expertOpen ? 260 : "fit-content",
+									width: expertOpen ? 300 : 260,
 									borderRadius: expertOpen ? 16 : 999,
 									backgroundColor: expertOpen ? "#fff" : "rgba(255,255,255,0.1)",
 									backdropFilter: expertOpen ? "none" : "blur(24px)",
@@ -154,15 +154,15 @@ export default function BeforeAfter() {
 								<div
 									className="transition-all duration-300 ease-out overflow-hidden"
 									style={{
-										maxHeight: expertOpen ? 60 : 0,
+										maxHeight: expertOpen ? 100 : 0,
 										opacity: expertOpen ? 1 : 0,
 									}}
 								>
-									<div className="border-t border-black/8 px-4 py-2.5 flex items-center justify-between gap-3">
+									<div className="border-t border-black/8 px-4 py-3 flex flex-col gap-2.5">
 										<p className="text-muted text-[0.75rem] leading-snug">
 											{expert.tagline}
 										</p>
-										<ContactButton variant="secondary" className="px-4 py-1.5 text-[0.75rem] whitespace-nowrap shrink-0">
+										<ContactButton variant="secondary" className="w-full px-4 py-2 text-[0.8125rem] text-center justify-center">
 											{expert.ctaButton}
 										</ContactButton>
 									</div>

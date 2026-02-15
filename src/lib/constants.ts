@@ -45,7 +45,7 @@ export const PROJECT_TYPE_VALUES = [
 export const PROJECT_TYPE_ICONS = ["🔨", "🏗️", "🏠", "📐"] as const;
 
 // Footer legal hrefs
-export const LEGAL_HREFS = ["#", "#"] as const;
+export const LEGAL_HREFS = ["/mentions-legales", "/politique-de-confidentialite"] as const;
 
 // Quote carousel: combines project images with testimonial data by index
 export const QUOTE_CAROUSEL_IMAGES = [

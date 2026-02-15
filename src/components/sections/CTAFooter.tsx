@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
 import ContactButton from "@/components/ui/ContactButton";
@@ -143,12 +144,12 @@ export default function CTAFooter() {
 									<ul className="space-y-1.5">
 										{legalItems.map((item) => (
 											<li key={item.label}>
-												<a
+												<Link
 													href={item.href}
 													className="text-[0.75rem] text-white/40 hover:text-white/70 transition-colors"
 												>
 													{item.label}
-												</a>
+												</Link>
 											</li>
 										))}
 									</ul>
@@ -163,14 +164,14 @@ export default function CTAFooter() {
 							<span className="hidden md:inline">&copy; {new Date().getFullYear()} {tCompany("name")}. {tFooter("copyright")}</span>
 							<div className="flex gap-4">
 								{legalItems.map((item) => (
-									<a key={item.label} href={item.href} className="md:hidden whitespace-nowrap hover:text-white/50 transition-colors">
+									<Link key={item.label} href={item.href} className="md:hidden whitespace-nowrap hover:text-white/50 transition-colors">
 										{item.label}
-									</a>
+									</Link>
 								))}
 								{legalItems.map((item) => (
-									<a key={`desktop-${item.label}`} href={item.href} className="hover:text-white/50 transition-colors hidden md:inline">
+									<Link key={`desktop-${item.label}`} href={item.href} className="hover:text-white/50 transition-colors hidden md:inline">
 										{item.label}
-									</a>
+									</Link>
 								))}
 							</div>
 						</div>

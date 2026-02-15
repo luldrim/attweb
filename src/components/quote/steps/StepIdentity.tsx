@@ -210,7 +210,9 @@ export default function StepIdentity() {
 					<span className="text-[0.8125rem] text-muted leading-snug">
 						{t("rgpdText")}{" "}
 						<a
-							href="#"
+							href="/politique-de-confidentialite"
+							target="_blank"
+							rel="noopener noreferrer"
 							className="text-foreground underline underline-offset-2 decoration-1 hover:text-foreground/70 transition-colors"
 							onClick={(e) => e.stopPropagation()}
 						>

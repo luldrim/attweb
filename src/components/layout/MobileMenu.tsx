@@ -15,7 +15,6 @@ type MobileMenuProps = {
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 	const t = useTranslations("nav");
 	const tCompany = useTranslations("company");
-	const links = t.raw("links") as Array<{ label: string; href: string }>;
 
 	return (
 		<AnimatePresence>
@@ -24,23 +23,23 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
-					transition={{ duration: 0.4, ease }}
+					transition={{ duration: 0.3, ease }}
 					className="fixed inset-0 z-50 bg-white"
 				>
 					<div className="flex h-full p-2.5 md:p-3 gap-2.5 md:gap-3">
-						{/* Left — Image panel */}
+						{/* Left — Image panel (clip-path reveal) */}
 						<motion.div
-							initial={{ x: "-100%", opacity: 0 }}
-							animate={{ x: 0, opacity: 1 }}
-							exit={{ x: "-100%", opacity: 0 }}
-							transition={{ duration: 0.6, ease }}
+							initial={{ clipPath: "inset(0 100% 0 0)" }}
+							animate={{ clipPath: "inset(0 0% 0 0)" }}
+							exit={{ clipPath: "inset(0 100% 0 0)" }}
+							transition={{ duration: 0.8, ease }}
 							className="hidden md:block relative w-[45%] h-full rounded-[20px] md:rounded-[24px] overflow-hidden flex-shrink-0"
 						>
 							<motion.div
-								initial={{ scale: 1.15 }}
+								initial={{ scale: 1.08 }}
 								animate={{ scale: 1 }}
-								exit={{ scale: 1.15 }}
-								transition={{ duration: 0.8, ease }}
+								exit={{ scale: 1.08 }}
+								transition={{ duration: 1, ease }}
 								className="absolute inset-0"
 							>
 								<Image
@@ -54,10 +53,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
 							{/* Bottom overlay text */}
 							<motion.div
-								initial={{ opacity: 0, y: 30 }}
+								initial={{ opacity: 0, y: 20 }}
 								animate={{ opacity: 1, y: 0 }}
-								exit={{ opacity: 0, y: 30 }}
-								transition={{ duration: 0.5, delay: 0.3, ease }}
+								exit={{ opacity: 0, y: 20 }}
+								transition={{ duration: 0.5, delay: 0.4, ease }}
 								className="absolute bottom-0 left-0 right-0 p-7 bg-gradient-to-t from-black/60 via-black/30 to-transparent"
 							>
 								<div className="flex items-center gap-2 mb-3 text-white/70">
@@ -78,111 +77,76 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 						</motion.div>
 
 						{/* Right — Content panel */}
-						<div className="flex-1 flex flex-col px-5 py-6 md:px-10 md:py-8 lg:px-14 overflow-y-auto">
-							{/* Top bar: logo + close */}
-							<motion.div
-								initial={{ opacity: 0, y: -20 }}
-								animate={{ opacity: 1, y: 0 }}
-								exit={{ opacity: 0, y: -20 }}
-								transition={{ duration: 0.4, delay: 0.15, ease }}
-								className="flex items-center justify-between mb-16 md:mb-24"
-							>
-								<a href="#accueil" onClick={onClose} className="text-[1.375rem] tracking-tight text-foreground">
-									<span className="font-semibold">Atout</span>
-									<span className="font-light italic ml-0.5">Travaux</span>
-								</a>
-								<button
-									onClick={onClose}
-									className="p-1 text-foreground hover:text-muted transition-colors"
-									aria-label={t("menuCloseLabel")}
-								>
-									<motion.svg
-										initial={{ rotate: -90, opacity: 0 }}
-										animate={{ rotate: 0, opacity: 1 }}
-										exit={{ rotate: 90, opacity: 0 }}
-										transition={{ duration: 0.3, delay: 0.2, ease }}
-										width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
-									>
-										<line x1="6" y1="6" x2="22" y2="22" />
-										<line x1="22" y1="6" x2="6" y2="22" />
-									</motion.svg>
-								</button>
-							</motion.div>
-
-							{/* CONTACTEZ-NOUS */}
+						<div className="flex-1 flex flex-col px-5 pt-20 pb-6 md:px-10 md:pt-24 md:pb-8 lg:px-14 overflow-y-auto">
+							{/* Contact */}
 							<div className="flex-1">
 								<motion.h2
-									initial={{ opacity: 0, y: 40 }}
+									initial={{ opacity: 0, y: 30 }}
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0, y: 20 }}
-									transition={{ duration: 0.6, delay: 0.2, ease }}
-									className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground tracking-tight leading-none mb-6"
+									transition={{ duration: 0.5, delay: 0.15, ease }}
+									className="text-[2rem] md:text-[2.5rem] lg:text-[3rem] font-bold text-foreground tracking-tight leading-none mb-8 md:mb-10"
 								>
 									{t("menuHeading")}
 								</motion.h2>
+
+								{/* Email */}
 								<motion.a
-									initial={{ opacity: 0, y: 20 }}
+									initial={{ opacity: 0, y: 15 }}
 									animate={{ opacity: 1, y: 0 }}
 									exit={{ opacity: 0 }}
-									transition={{ duration: 0.5, delay: 0.3, ease }}
+									transition={{ duration: 0.4, delay: 0.2, ease }}
 									href={`mailto:${tCompany("email")}`}
-									className="inline-block text-[1.0625rem] md:text-[1.125rem] text-foreground underline underline-offset-4 decoration-1 hover:text-muted transition-colors"
+									className="flex items-center gap-3 text-[1.0625rem] md:text-[1.125rem] text-foreground hover:text-muted transition-colors group"
 								>
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-muted group-hover:text-foreground transition-colors">
+										<rect x="2" y="4" width="20" height="16" rx="2" />
+										<path d="M22 7l-10 6L2 7" />
+									</svg>
 									{tCompany("email")}
 								</motion.a>
 
-								{/* Navigation */}
-								<div className="mt-12 md:mt-16">
-									<motion.p
-										initial={{ opacity: 0 }}
-										animate={{ opacity: 1 }}
-										transition={{ duration: 0.4, delay: 0.35, ease }}
-										className="text-[0.9375rem] font-semibold text-foreground mb-4"
+								{/* Phone */}
+								<motion.a
+									initial={{ opacity: 0, y: 15 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0 }}
+									transition={{ duration: 0.4, delay: 0.25, ease }}
+									href={tCompany("phoneHref")}
+									className="flex items-center gap-3 mt-4 text-[1.0625rem] md:text-[1.125rem] text-foreground hover:text-muted transition-colors group"
+								>
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-muted group-hover:text-foreground transition-colors">
+										<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+									</svg>
+									{tCompany("phone")}
+								</motion.a>
+
+								{/* Quote button */}
+								<motion.div
+									initial={{ opacity: 0, y: 15 }}
+									animate={{ opacity: 1, y: 0 }}
+									exit={{ opacity: 0 }}
+									transition={{ duration: 0.4, delay: 0.32, ease }}
+									className="mt-8 md:mt-10"
+								>
+									<Link
+										href="/request-quote"
+										onClick={onClose}
+										className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-white text-[0.9375rem] font-medium rounded-full hover:bg-foreground/85 transition-colors"
 									>
-										{t("menuNavLabel")}
-									</motion.p>
-									<div className="flex flex-wrap gap-x-8 gap-y-3">
-										{links.map((link, i) =>
-											link.href === "#contact" ? (
-												<motion.div
-													key={link.href}
-													initial={{ opacity: 0, y: 15 }}
-													animate={{ opacity: 1, y: 0 }}
-													exit={{ opacity: 0 }}
-													transition={{ duration: 0.4, delay: 0.35 + i * 0.05, ease }}
-												>
-													<Link
-														href="/request-quote"
-														onClick={onClose}
-														className="text-[0.9375rem] text-foreground hover:text-muted transition-colors cursor-pointer"
-													>
-														{link.label}
-													</Link>
-												</motion.div>
-											) : (
-												<motion.a
-													key={link.href}
-													initial={{ opacity: 0, y: 15 }}
-													animate={{ opacity: 1, y: 0 }}
-													exit={{ opacity: 0 }}
-													transition={{ duration: 0.4, delay: 0.35 + i * 0.05, ease }}
-													href={link.href}
-													onClick={onClose}
-													className="text-[0.9375rem] text-foreground hover:text-muted transition-colors cursor-pointer"
-												>
-													{link.label}
-												</motion.a>
-											)
-										)}
-									</div>
-								</div>
+										{t("menuQuoteButton")}
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+											<path d="M5 12h14M12 5l7 7-7 7" />
+										</svg>
+									</Link>
+								</motion.div>
 							</div>
 
 							{/* Bottom copyright */}
 							<motion.div
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
-								transition={{ duration: 0.4, delay: 0.6, ease }}
+								transition={{ duration: 0.4, delay: 0.4, ease }}
 								className="pt-8 mt-auto"
 							>
 								<p className="text-[0.8125rem] text-muted">

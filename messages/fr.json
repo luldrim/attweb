@@ -1,37 +1,37 @@
 {
   "metadata": {
     "home": {
-      "title": "Atout Travaux | Maître d'œuvre - Auvergne-Rhône-Alpes",
-      "description": "Atout Travaux, maître d'œuvre tous corps d'état en Auvergne-Rhône-Alpes. Construction, rénovation et aménagement de vos projets avec un interlocuteur unique."
+      "title": "A Tout Travaux | Maître d'œuvre - Auvergne-Rhône-Alpes",
+      "description": "A Tout Travaux, maître d'œuvre tous corps d'état en Auvergne-Rhône-Alpes. Construction, rénovation et aménagement de vos projets avec un interlocuteur unique."
     },
     "requestQuote": {
-      "title": "Demander un devis | Atout Travaux",
+      "title": "Demander un devis | A Tout Travaux",
       "description": "Obtenez un devis gratuit pour votre projet de construction, rénovation ou aménagement en Auvergne-Rhône-Alpes."
     },
     "legalNotice": {
-      "title": "Mentions légales | Atout Travaux",
-      "description": "Mentions légales du site Atout Travaux — informations sur l'éditeur, l'hébergeur et les conditions d'utilisation."
+      "title": "Mentions légales | A Tout Travaux",
+      "description": "Mentions légales du site A Tout Travaux — informations sur l'éditeur, l'hébergeur et les conditions d'utilisation."
     },
     "privacyPolicy": {
-      "title": "Politique de confidentialité | Atout Travaux",
-      "description": "Politique de confidentialité d'Atout Travaux — collecte de données, cookies, droits RGPD et contact."
+      "title": "Politique de confidentialité | A Tout Travaux",
+      "description": "Politique de confidentialité d'A Tout Travaux — collecte de données, cookies, droits RGPD et contact."
     }
   },
   "company": {
-    "name": "Atout Travaux",
+    "name": "A TOUT TRAVAUX",
     "tagline": "Maître d'œuvre — Tous corps d'état",
-    "phone": "04 73 00 00 00",
-    "phoneHref": "tel:+33473000000",
-    "email": "contact@atouttravaux.fr",
-    "address": "15 rue des Bâtisseurs, 63000 Clermont-Ferrand",
+    "phone": "06 52 21 42 20",
+    "phoneHref": "tel:+33652214220",
+    "email": "contact@a-tout-travaux.fr",
+    "address": "73 rue paul et marc barbezat 69150 Décines-Charpieu",
     "region": "Auvergne-Rhône-Alpes",
     "legalForm": "SARL",
-    "capital": "10 000 €",
-    "siret": "XXX XXX XXX XXXXX",
-    "rcs": "Clermont-Ferrand",
+    "capital": "1 000 €",
+    "siret": "100 861 723",
+    "rcs": "Lyon",
     "tvaIntra": "FR XX XXX XXX XXX",
-    "director": "Prénom Nom",
-    "host": "Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA"
+    "director": "Sabri Bytyqi",
+    "host": "Cloudflare, Inc., located at 101 Townsend St., San Francisco, California 94107"
   },
   "nav": {
     "links": [
@@ -51,14 +51,14 @@
     "menuOpenLabel": "Ouvrir le menu"
   },
   "hero": {
-    "label": "#1 Maître d'œuvre en Auvergne-Rhône-Alpes",
+    "label": "Maître d'œuvre en Auvergne-Rhône-Alpes",
     "headline": ["Construisons votre", "projet de vie"],
     "ctaButton": "Demander un devis",
-    "statsLabel": "Plus de 15 000 m²",
-    "statsSubLabel": "de travaux finis"
+    "statsLabel": "Plus de 20 000 m²",
+    "statsSubLabel": "de travaux réalisés"
   },
   "about": {
-    "heading": "Des projets discrets aux réalisations audacieuses — un savoir-faire qui rassemble",
+    "heading": "Des projets discrets aux réalisations audacieuses, un savoir-faire qui rassemble",
     "subheading": "Un processus fluide et une attention au détail pour transformer vos idées en espaces de vie exceptionnels.",
     "ctaButton": "Demander un devis"
   },
@@ -87,7 +87,7 @@
   ],
   "services": {
     "heading": "Notre expertise",
-    "subheading": "Un savoir-faire complet en travaux tous corps d'état — chaque prestation est pensée pour la qualité, la durabilité et le respect de vos attentes.",
+    "subheading": "Un savoir-faire complet en travaux tous corps d'état, chaque prestation est pensée pour la qualité, la durabilité et le respect de vos attentes.",
     "ctaButton": "Demander un devis",
     "items": [
       {
@@ -151,13 +151,13 @@
       {
         "name": "Marie Dupont",
         "role": "Propriétaire à Lyon",
-        "quote": "Atout Travaux a su transformer notre maison des années 70 en un espace moderne et lumineux. Le suivi du chantier était irréprochable et les délais parfaitement respectés.",
+        "quote": "A Tout Travaux a su transformer notre maison des années 70 en un espace moderne et lumineux. Le suivi du chantier était irréprochable et les délais parfaitement respectés.",
         "rating": 5
       },
       {
         "name": "Jean-Pierre Martin",
         "role": "Gérant de restaurant, Clermont-Ferrand",
-        "quote": "Pour la rénovation complète de notre restaurant, nous avions besoin d'un interlocuteur unique. Atout Travaux a coordonné tous les corps de métier avec un professionnalisme remarquable.",
+        "quote": "Pour la rénovation complète de notre restaurant, nous avions besoin d'un interlocuteur unique. A Tout Travaux a coordonné tous les corps de métier avec un professionnalisme remarquable.",
         "rating": 5
       },
       {
@@ -192,7 +192,7 @@
         "answer": "Nous intervenons sur tous corps d'état : gros œuvre, rénovation complète, aménagement intérieur, toiture, électricité, plomberie et menuiserie. Un seul interlocuteur pour l'ensemble de votre projet."
       },
       {
-        "question": "Comment se déroule un projet avec Atout Travaux ?",
+        "question": "Comment se déroule un projet avec A Tout Travaux ?",
         "answer": "Nous commençons par une visite et un diagnostic gratuit, puis nous établissons un devis détaillé. Après validation, nous coordonnons l'ensemble des artisans et assurons un suivi rigoureux jusqu'à la livraison finale."
       },
       {
@@ -374,7 +374,7 @@
     "sections": [
       {
         "title": "Éditeur du site",
-        "content": "Le site atouttravaux.fr est édité par la société {name}, {legalForm} au capital de {capital}, immatriculée au Registre du Commerce et des Sociétés de {rcs} sous le numéro SIRET {siret}.\n\nNuméro de TVA intracommunautaire : {tvaIntra}\n\nDirecteur de la publication : {director}\n\nSiège social : {address}\nTéléphone : {phone}\nEmail : {email}"
+        "content": "Le site  a-tout-travaux.fr est édité par la société {name}, {legalForm} au capital de {capital}, immatriculée au Registre du Commerce et des Sociétés de {rcs} sous le numéro SIRET {siret}.\n\nNuméro de TVA intracommunautaire : {tvaIntra}\n\nDirecteur de la publication : {director}\n\nSiège social : {address}\nTéléphone : {phone}\nEmail : {email}"
       },
       {
         "title": "Hébergeur",
@@ -382,19 +382,19 @@
       },
       {
         "title": "Propriété intellectuelle",
-        "content": "L'ensemble des contenus présents sur le site atouttravaux.fr (textes, images, graphismes, logo, icônes, vidéos, etc.) est protégé par les lois en vigueur sur la propriété intellectuelle.\n\nToute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans l'autorisation écrite préalable d'Atout Travaux."
+        "content": "L'ensemble des contenus présents sur le site  a-tout-travaux.fr (textes, images, graphismes, logo, icônes, vidéos, etc.) est protégé par les lois en vigueur sur la propriété intellectuelle.\n\nToute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans l'autorisation écrite préalable d'A Tout Travaux."
       },
       {
         "title": "Limitation de responsabilité",
-        "content": "Atout Travaux s'efforce de fournir des informations aussi précises que possible. Toutefois, la société ne pourra être tenue responsable des omissions, inexactitudes ou carences dans la mise à jour de ces informations, qu'elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.\n\nL'utilisation des informations et contenus disponibles sur l'ensemble du site ne saurait engager la responsabilité d'Atout Travaux."
+        "content": "A Tout Travaux s'efforce de fournir des informations aussi précises que possible. Toutefois, la société ne pourra être tenue responsable des omissions, inexactitudes ou carences dans la mise à jour de ces informations, qu'elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations.\n\nL'utilisation des informations et contenus disponibles sur l'ensemble du site ne saurait engager la responsabilité d'A Tout Travaux."
       },
       {
         "title": "Liens hypertextes",
-        "content": "Le site atouttravaux.fr peut contenir des liens hypertextes vers d'autres sites. Atout Travaux ne dispose d'aucun moyen de contrôle du contenu de ces sites tiers et n'assume aucune responsabilité quant à leur contenu."
+        "content": "Le site  a-tout-travaux.fr peut contenir des liens hypertextes vers d'autres sites. A Tout Travaux ne dispose d'aucun moyen de contrôle du contenu de ces sites tiers et n'assume aucune responsabilité quant à leur contenu."
       },
       {
         "title": "Droit applicable",
-        "content": "Tout litige en relation avec l'utilisation du site atouttravaux.fr est soumis au droit français. L'utilisateur reconnaît la compétence exclusive des tribunaux compétents de Clermont-Ferrand."
+        "content": "Tout litige en relation avec l'utilisation du site  a-tout-travaux.fr est soumis au droit français. L'utilisateur reconnaît la compétence exclusive des tribunaux compétents de Clermont-Ferrand."
       }
     ]
   },
@@ -405,7 +405,7 @@
     "sections": [
       {
         "title": "Introduction",
-        "content": "Atout Travaux ({legalForm} au capital de {capital}, SIRET {siret}) s'engage à protéger la vie privée des utilisateurs de son site atouttravaux.fr. La présente politique de confidentialité décrit les données personnelles collectées, les finalités de leur traitement et vos droits en vertu du Règlement Général sur la Protection des Données (RGPD)."
+        "content": "A Tout Travaux ({legalForm} au capital de {capital}, SIRET {siret}) s'engage à protéger la vie privée des utilisateurs de son site  a-tout-travaux.fr. La présente politique de confidentialité décrit les données personnelles collectées, les finalités de leur traitement et vos droits en vertu du Règlement Général sur la Protection des Données (RGPD)."
       },
       {
         "title": "Données collectées",
@@ -417,7 +417,7 @@
       },
       {
         "title": "Base légale",
-        "content": "Le traitement de vos données repose sur :\n\n• Votre consentement (formulaire de contact et de devis)\n• L'exécution de mesures précontractuelles (demande de devis)\n• L'intérêt légitime d'Atout Travaux (amélioration des services)"
+        "content": "Le traitement de vos données repose sur :\n\n• Votre consentement (formulaire de contact et de devis)\n• L'exécution de mesures précontractuelles (demande de devis)\n• L'intérêt légitime d'A Tout Travaux (amélioration des services)"
       },
       {
         "title": "Durée de conservation",
@@ -425,11 +425,11 @@
       },
       {
         "title": "Destinataires des données",
-        "content": "Vos données personnelles sont destinées exclusivement à l'équipe d'Atout Travaux. Elles ne sont transmises à aucun tiers, sauf obligation légale ou prestataires techniques nécessaires au fonctionnement du site (hébergeur, service d'envoi d'emails)."
+        "content": "Vos données personnelles sont destinées exclusivement à l'équipe d'A Tout Travaux. Elles ne sont transmises à aucun tiers, sauf obligation légale ou prestataires techniques nécessaires au fonctionnement du site (hébergeur, service d'envoi d'emails)."
       },
       {
         "title": "Cookies",
-        "content": "Le site atouttravaux.fr utilise uniquement des cookies strictement nécessaires au fonctionnement du site. Aucun cookie de suivi publicitaire ou analytique n'est utilisé sans votre consentement."
+        "content": "Le site  a-tout-travaux.fr utilise uniquement des cookies strictement nécessaires au fonctionnement du site. Aucun cookie de suivi publicitaire ou analytique n'est utilisé sans votre consentement."
       },
       {
         "title": "Vos droits",
@@ -437,11 +437,11 @@
       },
       {
         "title": "Sécurité",
-        "content": "Atout Travaux met en œuvre les mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre tout accès non autorisé, modification, divulgation ou destruction."
+        "content": "A Tout Travaux met en œuvre les mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre tout accès non autorisé, modification, divulgation ou destruction."
       },
       {
         "title": "Contact",
-        "content": "Pour toute question relative à la présente politique de confidentialité ou au traitement de vos données personnelles :\n\nAtout Travaux\n{address}\nEmail : {email}\nTéléphone : {phone}"
+        "content": "Pour toute question relative à la présente politique de confidentialité ou au traitement de vos données personnelles :\n\nA Tout Travaux\n{address}\nEmail : {email}\nTéléphone : {phone}"
       }
     ]
   }

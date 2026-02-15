@@ -224,6 +224,7 @@
     "contactHeading": "Contact",
     "legalHeading": "Informations",
     "copyright": "Tous droits réservés.",
+    "manageCookies": "Gérer les cookies",
     "services": ["Gros œuvre", "Rénovation", "Aménagement intérieur", "Électricité & Plomberie", "Menuiserie", "Toiture"],
     "legal": [
       { "label": "Mentions légales", "href": "/mentions-legales" },
@@ -342,6 +343,29 @@
       "demandSend": "Erreur lors de l'envoi de la demande"
     },
     "successToast": "Votre demande de devis a bien été envoyée !"
+  },
+  "cookieConsent": {
+    "heading": "Ce site utilise des cookies",
+    "description": "Nous utilisons des cookies pour mesurer l'audience et améliorer votre expérience. Vous pouvez choisir les cookies que vous acceptez.",
+    "closeLabel": "Fermer",
+    "acceptAll": "Tout accepter",
+    "rejectAll": "Tout refuser",
+    "customize": "Personnaliser",
+    "savePreferences": "Enregistrer mes choix",
+    "categories": {
+      "necessary": {
+        "label": "Nécessaires",
+        "description": "Indispensables au fonctionnement du site."
+      },
+      "analytics": {
+        "label": "Analytiques",
+        "description": "Mesure d'audience anonyme (Google Analytics)."
+      },
+      "marketing": {
+        "label": "Marketing",
+        "description": "Publicités personnalisées et remarketing."
+      }
+    }
   },
   "legalNotice": {
     "heading": "Mentions légales",

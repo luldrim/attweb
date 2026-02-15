@@ -1,5 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
+import CookieBanner from "@/components/ui/CookieBanner";
+import GTMScript from "@/components/ui/GTMScript";
 
 export async function generateMetadata() {
 	const t = await getTranslations("metadata.home");
@@ -19,6 +21,8 @@ export default async function LocaleLayout({
 	return (
 		<NextIntlClientProvider messages={messages}>
 			{children}
+			<CookieBanner />
+			<GTMScript />
 		</NextIntlClientProvider>
 	);
 }

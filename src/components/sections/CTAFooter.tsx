@@ -7,6 +7,7 @@ import { motion, useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
 import ContactButton from "@/components/ui/ContactButton";
 import ScrollReveal, { StaggerContainer, StaggerItem } from "@/components/ui/ScrollReveal";
+import { openCookieBanner } from "@/lib/consent";
 
 const CHAR_STAGGER = 0.02;
 const CHAR_DURATION = 0.35;
@@ -173,6 +174,12 @@ export default function CTAFooter() {
 										{item.label}
 									</Link>
 								))}
+								<button
+									onClick={openCookieBanner}
+									className="whitespace-nowrap hover:text-white/50 transition-colors cursor-pointer"
+								>
+									{tFooter("manageCookies")}
+								</button>
 							</div>
 						</div>
 					</ScrollReveal>

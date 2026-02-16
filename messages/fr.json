@@ -29,13 +29,13 @@
     "city": "Décines-Charpieu",
     "region": "Auvergne-Rhône-Alpes",
     "country": "FR",
-    "geo": { "latitude": 45.7685, "longitude": 4.9597 },
+    "geo": { "latitude": 45.75554414005686, "longitude": 4.940893036453919 },
     "url": "https://a-tout-travaux.fr",
     "logo": "/favicon.svg",
     "language": "fr-FR",
     "foundingYear": "2010",
     "priceRange": "$$",
-    "openingDays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "openingDays": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     "opens": "08:00",
     "closes": "18:00",
     "servicesCatalogName": "Services de maîtrise d'œuvre",
@@ -54,7 +54,7 @@
     "siret": "100 861 723",
     "rcs": "Lyon",
     "tvaIntra": "FR XX XXX XXX XXX",
-    "director": "Sabri Bytyqi",
+    "director": "Luldrim Bytyqi",
     "host": "Cloudflare, Inc., located at 101 Townsend St., San Francisco, California 94107",
     "breadcrumbHome": "Accueil"
   },
@@ -112,55 +112,56 @@
   ],
   "services": {
     "heading": "Notre expertise",
-    "subheading": "Un savoir-faire complet en travaux tous corps d'état, chaque prestation est pensée pour la qualité, la durabilité et le respect de vos attentes.",
+    "subheading": "Une expertise technique bâtie sur 15 ans de pratique. Du gros œuvre aux finitions, nous pilotons l'ensemble des corps d'état avec une exigence constante. Des travaux durables, réalisés dans les règles de l'art.",
     "ctaButton": "Demander un devis",
     "items": [
       {
         "number": "01",
-        "title": "Gros œuvre & Construction",
-        "subtitle": "Des fondations solides",
-        "stat": "200+",
-        "statLabel": "/ Projets de construction livrés",
-        "description": "Construction de structures durables : fondations, murs porteurs, dalles et charpentes. Un savoir-faire éprouvé pour des bâtiments qui traversent le temps."
+        "title": "Rénovation Complète",
+        "subtitle": "L'art de la transformation globale",
+        "stat": "15+",
+        "statLabel": "/ Années d'expertise chantier",
+        "description": "Depuis plus d'une décennie, nous rénovons des appartements et maisons du sol au plafond. Cette longévité nous a permis de perfectionner nos méthodes de coordination pour vous garantir un chantier fluide, livré dans les temps et sans surprise financière."
       },
       {
         "number": "02",
-        "title": "Rénovation complète",
-        "subtitle": "Transformer l'existant",
-        "stat": "150+",
-        "statLabel": "/ Rénovations menées à bien",
-        "description": "Réhabilitation, mise aux normes et modernisation de bâtiments existants. Nous transformons vos espaces avec exigence et respect du bâti."
+        "title": "Aménagement Intérieur",
+        "subtitle": "Agencement, Cuisines & Bains",
+        "stat": "500+",
+        "statLabel": "/ Espaces de vie métamorphosés",
+        "description": "C’est la signature de notre entreprise. Forts de centaines de projets livrés, nous maîtrisons toutes les subtilités de l'agencement sur-mesure. Une cuisine ergonomique, une salle de bain technique ou un dressing optimisé : nous créons des intérieurs qui valorisent votre patrimoine."
       },
       {
         "number": "03",
-        "title": "Aménagement intérieur",
-        "subtitle": "Design sur mesure",
-        "stat": "100+",
-        "statLabel": "/ Espaces aménagés",
+        "title": "Électricité & Plomberie",
+        "subtitle": "La sécurité des réseaux",
+        "stat": "100%",
+        "statLabel": " Conformité & Mise aux normes",
         "description": "Création d'intérieurs personnalisés : cloisons, faux-plafonds, revêtements et agencements pensés pour votre confort et votre style de vie."
       },
       {
         "number": "04",
-        "title": "Toiture & Couverture",
-        "subtitle": "Protection durable",
-        "stat": "80+",
-        "statLabel": "/ Toitures réalisées",
-        "description": "Création, réparation et isolation de toitures : tuiles, ardoises, zinc et solutions d'étanchéité pour une protection optimale."
+        "title": "Structure & Gros Œuvre",
+        "subtitle": "Modifications structurelles maîtrisées",
+        "stat": "10",
+        "statLabel": "Ans de Garantie Décennale",
+        "description": "Ouvrir un mur porteur ne s'improvise pas. Nous nous appuyons sur nos partenaires ingénieurs et maçons de longue date pour intervenir sur la structure. Nous pilotons ces opérations délicates pour redéfinir vos volumes en toute sécurité, couverts par nos garanties."
       },
       {
         "number": "05",
-        "title": "Électricité & Plomberie",
-        "subtitle": "Installations fiables",
-        "stat": "120+",
-        "statLabel": "/ Installations réalisées",
-        "description": "Installation et rénovation des réseaux électriques et sanitaires dans le respect des normes en vigueur, pour un confort au quotidien."
+        "title": "Toiture & Extérieur",
+        "subtitle": "Protection et isolation de l'enveloppe",
+        "stat": "1",
+        "statLabel": "Interlocuteur unique pour tout gérer",
+        "description": "Plus besoin de multiplier les entreprises. Pour votre toiture ou votre façade, nous activons nos équipes partenaires spécialisées tout en restant votre seul responsable. Nous garantissons la qualité des matériaux et la parfaite étanchéité de votre maison."
+        
       }
     ]
   },
   "projects": {
     "heading": "Nos réalisations",
     "subheading": "Chaque projet est le reflet de notre exigence — intentionnel, soigné et sur mesure.",
-    "partners": ["Réseau Pro BTP", "Qualibat", "Artisans de confiance", "Maisons & Travaux", "FFB Auvergne"],
+    "partners": ["Réseau Pro BTP", "Artisans de confiance", "Maisons & Travaux", "Promoteurs nationaux"],
     "items": [
       { "title": "Villa Horizon", "date": "Juil. 2025" },
       { "title": "Résidence du Lac", "date": "Juin 2025" },
@@ -233,7 +234,7 @@
         "answer": "Tous nos travaux sont couverts par une garantie décennale et une assurance responsabilité civile professionnelle. Nous travaillons exclusivement avec des artisans qualifiés et certifiés."
       },
       {
-        "question": "Intervenez-vous en dehors de Clermont-Ferrand ?",
+        "question": "Intervenez-vous en dehors de Lyon ?",
         "answer": "Oui, nous intervenons sur l'ensemble de la région Auvergne-Rhône-Alpes. N'hésitez pas à nous contacter pour vérifier la disponibilité dans votre secteur."
       }
     ]
@@ -419,7 +420,7 @@
       },
       {
         "title": "Droit applicable",
-        "content": "Tout litige en relation avec l'utilisation du site  a-tout-travaux.fr est soumis au droit français. L'utilisateur reconnaît la compétence exclusive des tribunaux compétents de Clermont-Ferrand."
+        "content": "Tout litige en relation avec l'utilisation du site  a-tout-travaux.fr est soumis au droit français. L'utilisateur reconnaît la compétence exclusive des tribunaux compétents de Lyon."
       }
     ]
   },
